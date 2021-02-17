@@ -16,10 +16,6 @@
 
 > This project follows Service-Oriented Architecture (SOA) that provides users with GraphQL endpoints that can be called in the Caaua FE.
 
-* Fork and clone this repository. Run bundle install.
-
-* Download [Postman](https://www.postman.com/downloads/) here. We will be using Postman to call our API.
-
 ## How to Install
 
 For usage on your local machine follow the instructions listed below:
@@ -61,7 +57,12 @@ visit localhost:3000 in your web browser
   * Rails 5.2.4.4
   
 ## Contact
-    
+
+#### Brian Liu: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/sagefreemangonzales/)  [Email](mailto:brian.b.liu@gmail.com), [GitHub](https://github.com/the-color-bliu)
+#### Cooper Terrones: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/sagefreemangonzales/)  [Email](mailto:cooper.terrones@outlook.com), [GitHub](https://github.com/coopterrones)
+#### Demaceo Vincent Howard: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/sagefreemangonzales/)  [Email](mailto:sagegonzales15@gmail.com), [GitHub](https://github.com/demaceo)
+#### Eugene Theriault: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/eugene-theriault/)  [Email](mailto:sagegonzales15@gmail.com), [GitHub](https://github.com/ETBassist)
+#### Nick King: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/anickking/)  [Email](mailto:nickmaxking@gmail.com), [GitHub](https://github.com/nmking22)
 #### Sage Freeman-Gonzales: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/sagefreemangonzales/)  [Email](mailto:sagegonzales15@gmail.com), [GitHub](https://github.com/SageOfCode)
 
 <!-- MARKDOWN LINKS -->
