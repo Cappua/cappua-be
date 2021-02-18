@@ -1,0 +1,17 @@
+language: ruby
+rbenv:
+- 2.5.3
+addons:
+  postgresql: 9.6
+before_install:
+  - gem install bundler
+script:
+- gem install bundler
+- bundle exec rails db:{create,migrate} RAILS_ENV=test
+- bundle exec rspec
+# deploy:
+  # provider: heroku
+  # api_key:
+  #   secure: LPqGW/kskrONi/iOdqNW193pdoXX0Uy6cZaYjoKkNtgZzdZIIo+l66BQAYiuQyKmKvbvO+76P6lz1E4OHmrKdFnmRex+NOtLEenNwhY1KgHt2mjXJi38DPeqX11R3R6t2Z9XJKg85n7068EZGuKM/yd7/0aVCDuyEK1IezpMYe2ziMjuDnjOobM3p3IkPlEwtqtWuV5uOj8xM5qh5/gUQ1Ss5F+hhR9FYWbfKzXXiXccHrzZ1NS6X/5EevyJK5xPXiN6Oo1Ve+w6jtaadEvoKOueg6cHB3drQiP10mMEY8mHRglcwskanVqhfSq+ddXoBR+vjgkl3YSSuR3saEr+EBD6IOeRdEz4Kua3YV/6cXMkPQufpQeULE6BCPpM0uEKnEJGW1VApCPZMEVVsp9PULVLkT5KSQFgNVMSIa5iB7PyPXxqEwIceD0tiWHgFEAJ0hPczj0xKDACpyzcDKLAlw8Q5B8uyypqm1sZ4UNZ5669xo3pbHjoP1BFoyKnusIBIBrvvNTEmyzpTeKeJ6/kogTSFb+Imw/3M3yMCLVgQF10csREji3LtaYHiosHH64iKzViR4CUQR4ckAN3ennC++aYx20fMpZLNX5q+zjpntcqPf8Eb9OUQASK/sIcpSpjm3YXnrLHCjOdBt/AaZxd9NMf8nAgU383U/fUqPzF8mc=
+  # app: cappua-be
+  # run: rails db:migrate

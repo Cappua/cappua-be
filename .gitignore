@@ -21,3 +21,12 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore application configuration
+/config/application.yml
+
+# Ignore coverage file from simplecov
+/coverage
+
+# Add gemfile lock to get travis to build
+Gemfile.lock
