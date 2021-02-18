@@ -1,5 +1,7 @@
 ## Types of Changes
 <!--- Put an `x` in all the boxes that apply: -->
+- [ ] This PR closes #
+
 - [ ] Bug fix (non-breaking change which fixes an issue): 
 
 - [ ] New feature (non-breaking change which adds functionality):
@@ -13,5 +15,3 @@
 - [ ] I have added tests to cover my changes.
 
 - [ ] All new and existing tests passed.
-
-**- [ ] This PR closes #**
