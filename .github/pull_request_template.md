@@ -1,7 +1,7 @@
 ## Types of Changes
 <!--- Put an `x` in all the boxes that apply: -->
 
-#### This PR closes #
+* This PR closes #
 
 - [ ] Bug fix (non-breaking change which fixes an issue): 
 
