@@ -14,7 +14,7 @@
   
 ## What it does
 
-> This project follows Service-Oriented Architecture (SOA) that provides users with GraphQL endpoints that can be called in the Caaua FE.
+> This project follows Service-Oriented Architecture (SOA) that provides users with GraphQL endpoints that can be called in the Cappua FE.
 
 ## How to Install
 
