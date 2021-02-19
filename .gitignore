@@ -29,4 +29,3 @@
 /coverage
 
 # Add gemfile lock to get travis to build
-Gemfile.lock
