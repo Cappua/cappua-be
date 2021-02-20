@@ -8,10 +8,24 @@ describe 'Upload endpoint' do
   end
 
   it 'can upload to an aws s3 bucket' do
-    form_body = { audio: 'somefilethatsgoingtobereallylongwhyareyoustillreadingthis' }
+    user = create(:user)
+    track = create(:track)
+    form_body = { 
+      audio: 'somefilethatsgoingtobereallylongwhyareyoustillreadingthis',
+      userId: track.id,
+      trackId: user.id 
+    }
 
     post '/upload', params: form_body, headers: { "Content-Type": 'multipart/form-data' }
 
     expect(response).to be_successful
+    expect(response.body).to have_key(:data)
+    expect(response.body[:data]).to have_key(:verse)
+    expect(response.body[:data][:verse]).to have_key(:audio_path)
+    expect(response.body[:data][:verse][:audio_path]).to be_a(String)
+    expect(response.body[:data][:verse]).to have_key(:track_id)
+    expect(response.body[:data][:verse][:track_id]).to eq(track.id)
+    expect(response.body[:data][:verse]).to have_key(:user_id)
+    expect(response.body[:data][:verse][:user_id]).to eq(user.id)
   end
 end
