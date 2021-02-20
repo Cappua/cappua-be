@@ -39,6 +39,9 @@ gem 'graphql'
 # Add wrapper for mixcloud api 
 gem 'mixcloud'
 
+# Allows easier use of AWS S3 bucket interactions
+gem 'aws-sdk-s3', '~> 1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
