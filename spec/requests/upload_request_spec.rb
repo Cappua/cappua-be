@@ -12,8 +12,8 @@ describe 'Upload endpoint' do
     track = create(:track)
     form_body = { 
       audio: 'somefilethatsgoingtobereallylongwhyareyoustillreadingthis',
-      userId: track.id,
-      trackId: user.id 
+      userId: user.id ,
+      trackId: track.id
     }
 
     post '/upload', params: form_body, headers: { "Content-Type": 'multipart/form-data' }
