@@ -33,11 +33,17 @@ gem 'faraday'
 # Keep information secure
 gem 'figaro'
 
+# Restful routes serialzer
+gem 'fast_jsonapi'
+
 # Create graphQL endpoints
 gem 'graphql'
 
-# Add wrapper for mixcloud api 
+# Add wrapper for mixcloud api
 gem 'mixcloud'
+
+# Allows easier use of AWS S3 bucket interactions
+gem 'aws-sdk-s3', '~> 1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
