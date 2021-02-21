@@ -65,7 +65,7 @@ class UploadController < ApplicationController
   end
 
   def valid_verse?
-    params[:type] == 'verse' && valid_ids
+    params[:type] == 'verse' && valid_ids?
   end
 
   def invalid_verse?
