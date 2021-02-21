@@ -13,9 +13,10 @@ class UploadController < ApplicationController
       if response.etag
         verse = Verse.create(
           audio_path: key,
-          user_id: params[:user_id],
-          track_id: params[:track_id]
+          user_id: params[:userId],
+          track_id: params[:trackId]
         )
+
         output = VerseSerializer.new(verse)
 
         render json: output
