@@ -1,7 +1,7 @@
 class Api::V1::UploadController < ApplicationController
   def create
     s3 = Aws::S3::Client.new(
-      region: ENV['AWS_REGION'],
+      region: 'us-west-1',
       access_key_id: ENV["AWS_ACCESS_KEY_ID"],
       secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"]
     )
