@@ -33,10 +33,13 @@ gem 'faraday'
 # Keep information secure
 gem 'figaro'
 
+# Restful routes serialzer
+gem 'fast_jsonapi'
+
 # Create graphQL endpoints
 gem 'graphql'
 
-# Add wrapper for mixcloud api 
+# Add wrapper for mixcloud api
 gem 'mixcloud'
 
 # Allows easier use of AWS S3 bucket interactions
