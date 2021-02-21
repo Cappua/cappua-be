@@ -31,7 +31,7 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
     #   body: form_body[:audio]
     # }).
 
-    post '/upload', params: form_body, headers: { "Content-Type": 'multipart/form-data' }
+    post '/api/v1/upload', params: form_body, headers: { "Content-Type": 'multipart/form-data' }
     json = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful

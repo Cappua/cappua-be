@@ -1,4 +1,4 @@
-class UploadController < ApplicationController
+class Api::V1::UploadController < ApplicationController
   def create
     s3 = Aws::S3::Client.new(
       region: ENV['AWS_REGION'],
