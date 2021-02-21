@@ -24,7 +24,7 @@ class Api::V1::UploadController < ApplicationController
         output = Hash.new
         output[:error] = 'Verse could not be successfully uploaded to cloud database.'
 
-        render json: output, :status => 400
+        render json: output, :status => 500
       end
     elsif invalid_verse?
       output = Hash.new
@@ -40,18 +40,18 @@ class Api::V1::UploadController < ApplicationController
           month: params[:month],
           year: params[:year]
         )
-        output = VerseSerializer.new(verse)
+        output = TrackSerializer.new(track)
 
         render json: output
       else
         output = Hash.new
         output[:error] = 'Track could not be successfully uploaded to cloud database.'
 
-        render json: output, :status => 400
+        render json: output, :status => 500
       end
     elsif invalid_track?
       output = Hash.new
-      output[:error] = 'Month and year must be included in track upload requests.'
+      output[:error] = 'Month and year must be included and valid in track upload requests.'
       render json: output, :status => 400
     else
       output = Hash.new
@@ -62,7 +62,9 @@ class Api::V1::UploadController < ApplicationController
   end
 
   def valid_ids?
-    User.find(params[:userId]) && Track.find(params[:trackId])
+    user = User.where(id: params[:userId])
+    track = Track.where(id: params[:trackId])
+    user != [] && track != []
   end
 
   def valid_verse?
@@ -74,7 +76,7 @@ class Api::V1::UploadController < ApplicationController
   end
 
   def valid_track?
-    params[:type] == 'track' && params[:month] && params[:year] # && user == admin
+    (1..12).to_a.include?(params[:month].to_i) && params[:year].present? && params[:type] == 'track'  # && user == admin
   end
 
   def invalid_track?
