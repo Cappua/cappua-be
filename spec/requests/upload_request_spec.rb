@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Upload endpoint' do
+describe 'Upload endpoint' do # intentionally omitting vcr; see below
   before :each do
     AWSResponse = Struct.new(:etag)
     @mock_response = AWSResponse.new("\"55e5r7b11rr7575f11l36423298e3a22\"")
@@ -17,6 +17,8 @@ describe 'Upload endpoint' do
 
     # TODO: modify the arguments in the .with statement to match what we're 
     # using in the actual controller, or this mock will fail
+    # ALSO WARNING: I'm not setting up vcr for this test because I don't want to record
+    # the response from AWS; it may contain sensitive data
     allow_any_instance_of(Aws::S3::Client).to receive(:put_object).with({
       bucket: 'some_bucket',
       key: 'file_prefix',
