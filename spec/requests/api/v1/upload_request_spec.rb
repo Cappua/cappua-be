@@ -11,11 +11,12 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
 
   it 'can upload a verse to an aws s3 bucket' do
     user = create(:user)
-    track = create(:track)
+    competition = create(:competition)
     form_body = {
       audio: @sample_verse,
-      userId: user.id,
-      trackId: track.id,
+      user_id: user.id,
+      competition_id: competition.id,
+      title: 'Just a Friend',
       type: 'verse'
     }
 
@@ -46,10 +47,12 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
     expect(json[:data][:attributes]).to be_a(Hash)
     expect(json[:data][:attributes]).to have_key(:audio_path)
     expect(json[:data][:attributes][:audio_path]).to be_a(String)
-    expect(json[:data][:attributes]).to have_key(:track_id)
-    expect(json[:data][:attributes][:track_id]).to eq(track.id)
+    expect(json[:data][:attributes]).to have_key(:competition_id)
+    expect(json[:data][:attributes][:competition_id]).to eq(competition.id)
     expect(json[:data][:attributes]).to have_key(:user_id)
     expect(json[:data][:attributes][:user_id]).to eq(user.id)
+    expect(json[:data][:attributes]).to have_key(:title)
+    expect(json[:data][:attributes][:title]).to eq('Just a Friend')
   end
 
   it 'can upload a track to an aws s3 bucket' do
@@ -57,7 +60,7 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
       audio: @sample_verse,
       month: 2,
       year: 2021,
-      type: 'track'
+      type: 'competition'
     }
 
     allow_any_instance_of(Aws::S3::Client).to receive(:put_object).and_return(@mock_response)
@@ -72,7 +75,7 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
     expect(json[:data]).to have_key(:id)
     expect(json[:data][:id]).to be_a(String)
     expect(json[:data]).to have_key(:type)
-    expect(json[:data][:type]).to eq('track')
+    expect(json[:data][:type]).to eq('competition')
     expect(json[:data]).to have_key(:attributes)
     expect(json[:data][:attributes]).to be_a(Hash)
     expect(json[:data][:attributes]).to have_key(:track_path)
@@ -83,11 +86,11 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
     expect(json[:data][:attributes][:year]).to eq(form_body[:year])
   end
 
-  it 'sends 400 response for verse upload requests with bad user/track ids' do
+  it 'sends 400 response for verse upload requests with bad user/tracks ids' do
     form_body = {
       audio: @sample_verse,
-      userId: 1,
-      trackId: 1,
+      user_id: 1,
+      competition_id: 1,
       type: 'verse'
     }
 
@@ -98,16 +101,16 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
 
     expect(response.status).to eq(400)
     expect(json).to be_a(Hash)
-    expect(json[:error]).to eq('Invalid user or track id.')
+    expect(json[:error]).to eq('Invalid user or competition id.')
   end
 
   it 'sends 500 response for verse upload requests that do not successfully upload' do
     user = create(:user)
-    track = create(:track)
+    competition = create(:competition)
     form_body = {
       audio: @sample_verse,
-      userId: user.id,
-      trackId: track.id,
+      user_id: user.id,
+      competition_id: competition.id,
       type: 'verse'
     }
     mock_response = AWSResponse.new(nil)
@@ -122,12 +125,12 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
     expect(json[:error]).to eq('Verse could not be successfully uploaded to cloud database.')
   end
 
-  it 'sends 400 response for track upload requests with invalid month' do
+  it 'sends 400 response for competition track upload requests with invalid month' do
     form_body = {
       audio: @sample_verse,
       month: 15,
       year: 2021,
-      type: 'track'
+      type: 'competition'
     }
 
     allow_any_instance_of(Aws::S3::Client).to receive(:put_object).and_return(@mock_response)
@@ -137,15 +140,15 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
 
     expect(response.status).to eq(400)
     expect(json).to be_a(Hash)
-    expect(json[:error]).to eq('Month and year must be included and valid in track upload requests.')
+    expect(json[:error]).to eq('Month and year must be included and valid in competition upload requests.')
   end
 
-  it 'sends 400 response for track upload requests with no year parameter' do
+  it 'sends 400 response for competition track upload requests with no year parameter' do
     form_body = {
       audio: @sample_verse,
       month: 10,
       year: nil,
-      type: 'track'
+      type: 'competition'
     }
 
     allow_any_instance_of(Aws::S3::Client).to receive(:put_object).and_return(@mock_response)
@@ -155,15 +158,15 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
 
     expect(response.status).to eq(400)
     expect(json).to be_a(Hash)
-    expect(json[:error]).to eq('Month and year must be included and valid in track upload requests.')
+    expect(json[:error]).to eq('Month and year must be included and valid in competition upload requests.')
   end
 
-  it 'sends 400 response for track upload requests with no month parameter' do
+  it 'sends 400 response for competition track upload requests with no month parameter' do
     form_body = {
       audio: @sample_verse,
       month: nil,
       year: 2021,
-      type: 'track'
+      type: 'competition'
     }
 
     allow_any_instance_of(Aws::S3::Client).to receive(:put_object).and_return(@mock_response)
@@ -173,15 +176,15 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
 
     expect(response.status).to eq(400)
     expect(json).to be_a(Hash)
-    expect(json[:error]).to eq('Month and year must be included and valid in track upload requests.')
+    expect(json[:error]).to eq('Month and year must be included and valid in competition upload requests.')
   end
 
-  it 'sends 500 response for track upload requests that do not successfully upload' do
+  it 'sends 500 response for competition track upload requests that do not successfully upload' do
     form_body = {
       audio: @sample_verse,
       month: 2,
       year: 2021,
-      type: 'track'
+      type: 'competition'
     }
 
     mock_response = AWSResponse.new(nil)
@@ -193,7 +196,7 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
 
     expect(response.status).to eq(500)
     expect(json).to be_a(Hash)
-    expect(json[:error]).to eq('Track could not be successfully uploaded to cloud database.')
+    expect(json[:error]).to eq('Competition could not be successfully uploaded to cloud database.')
   end
 
   it 'sends 400 response for upload requests with an invalid type' do

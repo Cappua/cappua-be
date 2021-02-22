@@ -1,5 +1,5 @@
 class Verse < ApplicationRecord
   belongs_to :user
-  belongs_to :track
+  belongs_to :competition
   has_many :votes
 end
