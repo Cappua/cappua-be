@@ -5,17 +5,17 @@ FactoryBot.define do
     image { Faker::Internet.url }
   end
 
-  factory :track do
+  factory :competition do
     track_path { Faker::Internet.url }
     month { rand(13) }
     year { 2021 }
   end
 
   factory :verse do
-    track_id { rand(100) }
+    competition_id { rand(100) }
     user_id { rand(100) }
     audio_path { Faker::Internet.url }
     user
-    track
+    competition
   end
 end

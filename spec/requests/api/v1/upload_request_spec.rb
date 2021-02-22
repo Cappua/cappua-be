@@ -11,11 +11,11 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
 
   it 'can upload a verse to an aws s3 bucket' do
     user = create(:user)
-    track = create(:track)
+    competition = create(:competition)
     form_body = {
       audio: @sample_verse,
-      userId: user.id,
-      trackId: track.id,
+      user_id: user.id,
+      competition_id: competition.id,
       title: 'Just a Friend',
       type: 'verse'
     }
