@@ -13,6 +13,7 @@ class Api::V1::UploadController < ApplicationController
       if response.etag
         verse = Verse.create(
           audio_path: key,
+          title: params[:title],
           user_id: params[:userId],
           track_id: params[:trackId]
         )

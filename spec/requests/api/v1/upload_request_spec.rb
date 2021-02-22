@@ -16,6 +16,7 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
       audio: @sample_verse,
       userId: user.id,
       trackId: track.id,
+      title: 'Just a Friend',
       type: 'verse'
     }
 
@@ -50,6 +51,8 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
     expect(json[:data][:attributes][:track_id]).to eq(track.id)
     expect(json[:data][:attributes]).to have_key(:user_id)
     expect(json[:data][:attributes][:user_id]).to eq(user.id)
+    expect(json[:data][:attributes]).to have_key(:title)
+    expect(json[:data][:attributes][:title]).to eq('Just a Friend')
   end
 
   it 'can upload a track to an aws s3 bucket' do
