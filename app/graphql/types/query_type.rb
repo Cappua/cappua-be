@@ -4,16 +4,12 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
+    field :competition, Types::CompetitionType, null: false do
+      argument :id, ID, required: true
+    end
 
-    # TODO: remove me
-    field :test_field, String, null: false, description: "An example field added by the generator" 
-    # WARNING: to query this field, use testField
-    # the GraphQL gem converts snake_case to camelCase
-      
-    def test_field
-      "Hello World!"
+    def competition(id:)
+      Competition.find(id)
     end
   end
 end

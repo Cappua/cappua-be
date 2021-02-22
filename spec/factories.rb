@@ -9,6 +9,9 @@ FactoryBot.define do
     track_path { Faker::Internet.url }
     month { rand(13) }
     year { 2021 }
+    description { Faker::Games::Pokemon.name }
+    genre { Faker::Games::Pokemon.move }
+    rules { Faker::Games::Pokemon.location }
   end
 
   factory :verse do
