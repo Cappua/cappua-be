@@ -10,17 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_22_182047) do
+ActiveRecord::Schema.define(version: 2021_02_22_184937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "tracks", force: :cascade do |t|
+  create_table "competitions", force: :cascade do |t|
     t.string "track_path"
     t.integer "month"
     t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
+    t.string "genre"
+    t.string "rules"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,11 +37,11 @@ ActiveRecord::Schema.define(version: 2021_02_22_182047) do
   create_table "verses", force: :cascade do |t|
     t.string "audio_path"
     t.bigint "user_id"
-    t.bigint "track_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
-    t.index ["track_id"], name: "index_verses_on_track_id"
+    t.bigint "competition_id"
+    t.index ["competition_id"], name: "index_verses_on_competition_id"
     t.index ["user_id"], name: "index_verses_on_user_id"
   end
 
@@ -51,7 +54,7 @@ ActiveRecord::Schema.define(version: 2021_02_22_182047) do
     t.index ["verse_id"], name: "index_votes_on_verse_id"
   end
 
-  add_foreign_key "verses", "tracks"
+  add_foreign_key "verses", "competitions"
   add_foreign_key "verses", "users"
   add_foreign_key "votes", "users"
   add_foreign_key "votes", "verses"
