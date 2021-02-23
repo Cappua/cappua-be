@@ -6,6 +6,7 @@ module Types
     field :title, String, null: false
     field :competition_id, Integer, null: false
     field :vote, Types::VoteType, null: true
+    field :user, Types::UserType, null: true
     field :upvoted, Boolean, null: false do
       argument :user_id, Integer, required: true
     end
