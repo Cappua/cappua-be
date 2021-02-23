@@ -5,7 +5,7 @@ module Types
     field :user_id, Integer, null: false
     field :title, String, null: false
     field :competition_id, Integer, null: false
-    field :vote, Types::Vote, null: true
+    field :vote, Types::VoteType, null: true
   end
 end
 
