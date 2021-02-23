@@ -19,5 +19,11 @@ module Types
     def verse(id:)
       Verse.find(id)
     end
+
+    field :verses, [Types::VerseType], null: false 
+
+    def verses
+      Verse.all
+    end
   end
 end
