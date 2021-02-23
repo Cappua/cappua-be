@@ -8,3 +8,4 @@ module Types
     field :vote, Types::Vote, null: true
   end
 end
+

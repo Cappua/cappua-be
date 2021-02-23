@@ -11,5 +11,19 @@ module Types
     def competition(id:)
       Competition.find(id)
     end
+
+    field :verse, Types::VerseType, null: false do
+      argument :id, ID, required: true
+    end
+
+    def verse(id:)
+      Verse.find(id)
+    end
+
+    field :verses, [Types::VerseType], null: false 
+
+    def verses
+      Verse.all
+    end
   end
 end
