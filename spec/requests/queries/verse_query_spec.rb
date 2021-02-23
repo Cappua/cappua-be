@@ -11,6 +11,7 @@ describe 'A graphql query to get a single verse' do
         competitionId
         userId
         title
+        user { name }
       }
     }"
 
@@ -31,6 +32,11 @@ describe 'A graphql query to get a single verse' do
     expect(result[:data][:verse][:userId]).to eq(verse.user_id)
     expect(result[:data][:verse]).to have_key(:title)
     expect(result[:data][:verse][:title]).to eq(verse.title)
+    expect(result[:data][:verse]).to have_key(:user)
+    expect(result[:data][:verse][:user]).to be_a(Hash)
+    expect(result[:data][:verse][:user]).to have_key(:name)
+    expect(result[:data][:verse][:user][:name]).to be_a(String)
+
   end
 end
 
