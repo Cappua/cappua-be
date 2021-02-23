@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'It can get a single competition' do
   it 'through graphql' do
     competition = create(:competition)
+    verses = create_list(:verse, 2, competition: competition)
     query_string = "query {competition(id: #{competition.id}) {
                       id
                       trackPath
@@ -11,6 +12,7 @@ describe 'It can get a single competition' do
                       description
                       genre
                       rules
+                      verses { id }
                     }}"
 
     post graphql_path, params: { query: query_string }
@@ -24,7 +26,11 @@ describe 'It can get a single competition' do
                               'year': competition.year,
                               'description': "#{competition.description}",
                               'genre': "#{competition.genre}",
-                              'rules': "#{competition.rules}"
+                              'rules': "#{competition.rules}",
+                              'verses': [
+                                {'id': "#{verses[0].id}"},
+                                {'id': "#{verses[1].id}"}
+                              ]
                             }
                           }
                         })
