@@ -18,6 +18,7 @@ FactoryBot.define do
     competition_id { rand(100) }
     user_id { rand(100) }
     audio_path { Faker::Internet.url }
+    title { Faker::Books::Lovecraft.deity }
     user
     competition
   end
