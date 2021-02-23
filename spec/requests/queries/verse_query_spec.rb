@@ -65,3 +65,77 @@ describe 'A graphql query to get multiple verses' do
     end
   end
 end
+
+describe 'Vote info subqueries' do
+  before :each do
+    @user = create(:user)
+    @verse = create(:verse, user: @user)
+  end
+
+  it 'upvoted returns false if associated vote does not exist' do
+    query_string = "query {
+      verse(id: #{@verse.id}) {
+        id
+        upvoted(userId: #{@user.id})
+      }
+    }"
+
+    post graphql_path, params: { query: query_string }
+
+    result = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to be_successful
+    expect(result).to have_key(:data)
+    expect(result[:data]).to have_key(:verse)
+    expect(result[:data][:verse]).to have_key(:id)
+    expect(result[:data][:verse][:id]).to eq("#{@verse.id}")
+    expect(result[:data][:verse]).to have_key(:upvoted)
+    expect(result[:data][:verse][:upvoted]).to eq(false)
+  end
+
+  it 'upvoted returns true if associated vote does exist' do
+    vote = create(:vote, user: @user, verse: @verse)
+
+    query_string = "query {
+      verse(id: #{@verse.id}) {
+        id
+        upvoted(userId: #{@user.id})
+      }
+    }"
+
+    post graphql_path, params: { query: query_string }
+
+    result = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to be_successful
+    expect(result).to have_key(:data)
+    expect(result[:data]).to have_key(:verse)
+    expect(result[:data][:verse]).to have_key(:id)
+    expect(result[:data][:verse][:id]).to eq("#{@verse.id}")
+    expect(result[:data][:verse]).to have_key(:upvoted)
+    expect(result[:data][:verse][:upvoted]).to eq(true)
+  end
+
+  it 'vote count returns number of associated votes' do
+    create_list(:vote, 6, verse: @verse)
+
+    query_string = "query {
+      verse(id: #{@verse.id}) {
+        id
+        voteCount
+      }
+    }"
+
+    post graphql_path, params: { query: query_string }
+
+    result = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to be_successful
+    expect(result).to have_key(:data)
+    expect(result[:data]).to have_key(:verse)
+    expect(result[:data][:verse]).to have_key(:id)
+    expect(result[:data][:verse][:id]).to eq("#{@verse.id}")
+    expect(result[:data][:verse]).to have_key(:voteCount)
+    expect(result[:data][:verse][:voteCount]).to eq(6)
+  end
+end
