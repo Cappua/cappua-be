@@ -64,8 +64,8 @@ POST /upload allows for the upload of audio files and the creation of both compe
 
 |     Name        |      Type     |   Description                                                                                               |
 | --------------- | ------------- | ----------------------------------------------------------------------------------------------------------- |
-|  type           |  String       |   `'verse'` or `'competition'` to specify what kind of file is being uploaded                               |
-|  audio          |  mp3.         |   Audio file to be uploaded                                                                                 |
+|  type           |  String       |   (required) `'verse'` or `'competition'` to specify what kind of file is being uploaded                    |
+|  audio          |  mp3.         |   (required) Audio file to be uploaded                                                                      |
 |  user_id        |  Integer      |   (required for verse uploads) - the id of the user that is uploading a verse                               |
 |  competition_id |  Integer      |   (required for verse uploads) - the id of the competition that a verse is being uploaded for               |
 |  title          |  String       |   (required for verse uploads) - the name of the verse                                                      |
