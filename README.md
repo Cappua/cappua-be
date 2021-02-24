@@ -55,9 +55,9 @@ visit localhost:3000 in your web browser
 
 Our BE API uses a combination of ReSTful endpoints and GraphQL queries. Our single ReSTful endpoint, `POST /upload`, handles audio file uploads into our nested AWS S3 bucket, and creates related entries in our database. Our GraphQL queries handle all the rest of our CRUD functionality.
 
-### POST /upload
+### POST /upload - ReSTful Endpoint
 
-POST /upload allows for the upload of audio files and the creation of both competition and verse rows in our BE database. The required parameter `type` is used to define which of these two functions will be performed.
+POST /upload allows for the upload of audio files and the creation of both competition and verse rows in our BE database. The required parameter `type` is used to define which of these two functions will be performed. Parameters must be passed in with a `multipart/form-data` content type header.
 
 #### Request Parameters
 
@@ -107,6 +107,44 @@ POST /upload allows for the upload of audio files and the creation of both compe
      :track_path=>"competitions/es_zone_in.mp3",
      :month=>2,
      :year=>2021}}}
+```
+
+### Competitions Query - GraphQL
+
+#### Request Query
+
+```
+query {
+  competitions {
+    id
+    trackPath
+    month
+    year
+    verses { verseType }
+  }
+}
+```
+
+#### Sample Response Body
+
+```
+# Raw JSON
+"{\"data\":{\"competition\":{\"id\":\"213\",\"trackPath\":\"http://stiedemann.biz/thurman\",\"month\":7,\"year\":2021,\"description\":\"Pidgeot\",\"genre\":\"Struggle\",\"rules\":\"Anistar City\",\"verses\":[{\"id\":\"223\"},{\"id\":\"224\"}]}}}"
+
+# Parsed JSON
+{:data=>
+  {:competition=>
+    {:id=>"213",
+     :trackPath=>"http://stiedemann.biz/thurman",
+     :month=>7,
+     :year=>2021,
+     :description=>"Pidgeot",
+     :genre=>"Struggle",
+     :rules=>"Anistar City",
+     :verses=>[{:id=>"223"}, {:id=>"224"}]
+    }
+  }
+}
 ```
 
 ## Licenses
