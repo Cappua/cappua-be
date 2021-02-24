@@ -51,6 +51,56 @@ visit localhost:3000 in your web browser
 
   * Write thorough and understandable documentation
 
+## API Contract
+
+Our BE API uses a combination of ReSTful endpoints and GraphQL queries. Our single ReSTful endpoint, `POST /upload`, handles audio file uploads into our nested AWS S3 bucket, and creates related entries in our database. Our GraphQL queries handle all the rest of our CRUD functionality.
+
+### POST /upload
+
+POST /upload allows for the upload of audio files and the creation of both competition and verse rows in our BE database. The required parameter `type` is used to define which of these two functions will be performed.
+
+#### Request Parameters
+
+|     Name        |      Type     |   Description                                                                                               |
+| --------------- | ------------- | ----------------------------------------------------------------------------------------------------------- |
+|  type           |  String       |   `'verse'` or `'competition'` to specify what kind of file is being uploaded                               |
+|  audio          |  mp3.         |   Audio file to be uploaded                                                                                 |
+|  user_id        |  Integer      |   (required for verse uploads) - the id of the user that is uploading a verse                               |
+|  competition_id |  Integer      |   (required for verse uploads) - the id of the competition that a verse is being uploaded for               |
+|  title          |  String       |   (required for verse uploads) - the name of the verse                                                      |
+|  Month          |  Integer      |   (required for competition uploads) - Numeric Representation (1 - 12) of the month competition is held in  |
+|  Year           |  Integer      |   (required for competition uploads) - Numeric Representation of the year competition is held in            |
+|  Description    |  String       |   (required for competition uploads) - Description of the competition to be shown on the competitions page  |
+|  Genre          |  String       |   (required for competition uploads) - Genre of the competition to be shown on the competitions page        |
+|  Rules          |  String       |   (required for competition uploads) - Genre of the competition to be shown on the competitions page        |
+
+#### Sample Response (type => 'verse')
+
+```
+{:data=>
+  {:id=>"210",
+   :type=>"verse",
+   :attributes=>
+    {:id=>210,
+     :audio_path=>"verses/es_zone_in.mp3",
+     :competition_id=>204,
+     :user_id=>283,
+     :title=>"Just a Friend"}}}
+```
+
+#### Sample Response (type => 'competition')
+
+```
+{:data=>
+  {:id=>"207",
+   :type=>"competition",
+   :attributes=>
+    {:id=>207,
+     :track_path=>"competitions/es_zone_in.mp3",
+     :month=>2,
+     :year=>2021}}}
+```
+
 ## Licenses
 
   * Ruby 2.5.3
