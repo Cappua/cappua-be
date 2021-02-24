@@ -3,7 +3,7 @@ module Types
     field :id, ID, null: false
     field :name, String, null: false
     field :email, String, null: false
-    field :image, String, null: false
-    field :verse, Types::Verse, null: true
+    field :image, String, null: true
+    field :verse, Types::VerseType, null: true
   end
 end
