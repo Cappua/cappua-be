@@ -29,3 +29,5 @@
 /coverage
 
 # Add gemfile lock to get travis to build
+
+.DS_Store
