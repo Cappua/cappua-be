@@ -12,6 +12,9 @@ script:
  deploy:
    provider: elasticbeanstalk
    region: "us-east-2"
+   access_key_id: $AWS_ACCESS_KEY_ID 
+   secret_access_key: $AWS_SECRET_ACCESS_KEY
    app: cappua-be
+   env: Cappuabe-env
    bucket_name: "elasticbeanstalk-us-east-2-882396049373"
    run: rails db:migrate
