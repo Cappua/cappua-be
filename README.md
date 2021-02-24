@@ -9,6 +9,7 @@
   - [How to Install](#how-to-install)
   - [Dependencies](#dependencies)
   - [Learning Goals](#learning-goals)
+  - [API Contract](#api-contract)
   - [Licenses](#licenses)
   - [Contact](#contact)
   
