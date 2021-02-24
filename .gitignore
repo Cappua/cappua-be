@@ -28,4 +28,5 @@
 # Ignore coverage file from simplecov
 /coverage
 
-# Add gemfile lock to get travis to build
+# Ignore DS Store
+.DS_Store
