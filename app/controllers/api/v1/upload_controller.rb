@@ -35,7 +35,7 @@ class Api::V1::UploadController < ApplicationController
       output[:error] = 'Invalid user or competition id.'
       render json: output, :status => 400
     elsif valid_track?
-      key = "tracks/#{params[:audio].original_filename}"
+      key = "competitions/#{params[:audio].original_filename}"
       response = s3.put_object(bucket: ENV['S3_BUCKET'], key: key, body: params[:audio])
 
       if response.etag
