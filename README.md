@@ -77,6 +77,10 @@ POST /upload allows for the upload of audio files and the creation of both compe
 #### Sample Response (type => 'verse')
 
 ```
+# Raw JSON
+"{\"data\":{\"id\":\"222\",\"type\":\"verse\",\"attributes\":{\"id\":222,\"audio_path\":\"verses/es_zone_in.mp3\",\"competition_id\":212,\"user_id\":295,\"title\":\"Just a Friend\"}}}"
+
+# Parsed JSON
 {:data=>
   {:id=>"210",
    :type=>"verse",
@@ -88,9 +92,13 @@ POST /upload allows for the upload of audio files and the creation of both compe
      :title=>"Just a Friend"}}}
 ```
 
-#### Sample Response (type => 'competition')
+#### Sample Response Body (type => 'competition')
 
 ```
+# Raw JSON
+"{\"data\":{\"id\":\"210\",\"type\":\"competition\",\"attributes\":{\"id\":210,\"track_path\":\"competitions/es_zone_in.mp3\",\"month\":2,\"year\":2021}}}"
+
+# Parsed JSON
 {:data=>
   {:id=>"207",
    :type=>"competition",
