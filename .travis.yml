@@ -11,10 +11,10 @@ script:
 - bundle exec rspec
  deploy:
    provider: elasticbeanstalk
-   region: "us-east-2"
+   region: "us-west-1"
    access_key_id: $AWS_ACCESS_KEY_ID 
    secret_access_key: $AWS_SECRET_ACCESS_KEY
    app: cappua-be
-   env: Cappuabe-env
-   bucket_name: "elasticbeanstalk-us-east-2-882396049373"
+   env: $CAPPUA_BEANSTALK_AWS_ENV
+   bucket_name: $CAPPUA_BE_BEANSTALK_BUCKET
    run: rails db:migrate
