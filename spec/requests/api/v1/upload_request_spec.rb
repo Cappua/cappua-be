@@ -2,8 +2,8 @@ require 'rails_helper'
 require 'date'
 
 describe 'Upload endpoint' do # intentionally omitting vcr; see below
+  AWSResponse = Struct.new(:etag)
   before :each do
-    AWSResponse = Struct.new(:etag)
     @mock_response = AWSResponse.new("\"55e5r7b11rr7575f11l36423298e3a22\"")
     include ActionDispatch::TestProcess::FixtureFile
     @sample_verse = fixture_file_upload("spec/fixtures/es_zone_in.mp3")

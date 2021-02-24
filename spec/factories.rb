@@ -22,4 +22,9 @@ FactoryBot.define do
     user
     competition
   end
+
+  factory :vote do
+    user
+    verse
+  end
 end
