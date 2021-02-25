@@ -32,6 +32,12 @@ module Types
       Verse.last_month_winner
     end
 
+    field :top_three_contenders, [Types::TopThreeContenders], null: false
+
+    def top_three_contenders
+      Verse.top_three
+    end
+
     # last winner winning verse by prior month with most votes.length
   end
 end

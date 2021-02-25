@@ -13,11 +13,22 @@ class Verse < ApplicationRecord
 
   def self.previous_month
     # 1.month.ago
-    current_month = Time.now.mon
     if current_month == 1
       return 12
     else
       current_month - 1
     end
+  end
+
+  def self.current_month
+    current_month = Time.now.mon
+  end
+
+  def self.top_three
+    competition = Competition.find_by(month: current_month)
+    contenders = competition.verses.sort_by do |verse|
+      verse.votes.count
+    end.reverse
+    contenders[0..2]
   end
 end
