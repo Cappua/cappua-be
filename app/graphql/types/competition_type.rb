@@ -7,6 +7,7 @@ module Types
     field :description, String, null: true
     field :genre, String, null: true
     field :rules, String, null: true
+    field :image, String, null: true
     field :verses, [Types::VerseType], null: true
   end
 end

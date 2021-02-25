@@ -12,6 +12,7 @@ describe 'It can get a single competition' do
                       description
                       genre
                       rules
+                      image
                       verses { id }
                     }}"
 
@@ -27,6 +28,7 @@ describe 'It can get a single competition' do
                               'description': "#{competition.description}",
                               'genre': "#{competition.genre}",
                               'rules': "#{competition.rules}",
+                              'image': nil,
                               'verses': [
                                 {'id': "#{verses[0].id}"},
                                 {'id': "#{verses[1].id}"}
