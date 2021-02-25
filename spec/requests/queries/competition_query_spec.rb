@@ -20,7 +20,6 @@ describe 'It can get a single competition' do
     result = JSON.parse(response.body, symbolize_names: true)
     expect(response).to be_successful
 
-    # require 'pry'; binding.pry
     expect(result).to have_key(:data)
     expect(result[:data]).to be_a(Hash)
     expect(result[:data]).to have_key(:competition)
