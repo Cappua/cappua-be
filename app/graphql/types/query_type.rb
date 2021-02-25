@@ -20,10 +20,18 @@ module Types
       Verse.find(id)
     end
 
-    field :verses, [Types::VerseType], null: false 
+    field :verses, [Types::VerseType], null: false
 
     def verses
       Verse.all
     end
+
+    field :last_winner, Types::LastWinner, null: false
+
+    def last_winner
+      Verse.last_month_winner
+    end
+
+    # last winner winning verse by prior month with most votes.length
   end
 end
