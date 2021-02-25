@@ -198,6 +198,35 @@ query {
       :title=>"Dagon"}]}}
 ```
 
+### createVote mutation - GraphQL
+
+#### Request Query
+
+```
+mutation {
+  createVote( input: { verseId: ID, userId: ID }) {
+      id
+      userId
+      verseId
+    }
+  }
+}
+```
+
+#### Sample Response
+
+```
+{
+  "data": {
+    "createVote": {
+      "id": "<integer>"
+        "verseId": "<integer>",
+        "userId": "<integer>"
+    }
+  }
+}
+```
+
 ## Licenses
 
   * Ruby 2.5.3
