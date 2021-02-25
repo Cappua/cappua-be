@@ -25,7 +25,7 @@ competition = Competition.create(
   User.create(
     name: Faker::Games::Witcher.character,
     email: Faker::Internet.email,
-    image: Faker::Internet.url
+    image: "https://pbs.twimg.com/profile_images/1237550450/mstom_400x400.jpg"
   )
 end
 
