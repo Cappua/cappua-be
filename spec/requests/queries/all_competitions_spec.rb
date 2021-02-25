@@ -49,6 +49,6 @@ describe 'It can get all competitions' do
       expect(comp_data).to have_key(:image)
       expect(comp_data).to have_key(:verses)
       expect(comp_data[:verses]).to be_an(Array)
-    end 
+    end
   end
 end
