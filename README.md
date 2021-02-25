@@ -148,7 +148,7 @@ query {
 }
 ```
 
-### Competitions Query - GraphQL
+### Verses Query - GraphQL
 
 #### Request Query
 
