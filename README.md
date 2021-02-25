@@ -9,6 +9,7 @@
   - [How to Install](#how-to-install)
   - [Dependencies](#dependencies)
   - [Learning Goals](#learning-goals)
+  - [API Contract](#api-contract)
   - [Licenses](#licenses)
   - [Contact](#contact)
   
@@ -50,6 +51,152 @@ visit localhost:3000 in your web browser
   * Utilize workflow: small commits, descriptive pull requests and code review
 
   * Write thorough and understandable documentation
+
+## API Contract
+
+Our BE API uses a combination of ReSTful endpoints and GraphQL queries. Our single ReSTful endpoint, `POST /upload`, handles audio file uploads into our nested AWS S3 bucket, and creates related entries in our database. Our GraphQL queries handle all the rest of our CRUD functionality.
+
+### POST /upload - ReSTful Endpoint
+
+POST /upload allows for the upload of audio files and the creation of both competition and verse rows in our BE database. The required parameter `type` is used to define which of these two functions will be performed. Parameters must be passed in with a `multipart/form-data` content type header.
+
+#### Request Parameters
+
+|     Name        |      Type     |   Description                                                                                               |
+| --------------- | ------------- | ----------------------------------------------------------------------------------------------------------- |
+|  type           |  String       |   (required) `'verse'` or `'competition'` to specify what kind of file is being uploaded                    |
+|  audio          |  mp3          |   (required) Audio file to be uploaded                                                                      |
+|  user_id        |  Integer      |   (required for verse uploads) - the id of the user that is uploading a verse                               |
+|  competition_id |  Integer      |   (required for verse uploads) - the id of the competition that a verse is being uploaded for               |
+|  title          |  String       |   (required for verse uploads) - the name of the verse                                                      |
+|  Month          |  Integer      |   (required for competition uploads) - Numeric Representation (1 - 12) of the month competition is held in  |
+|  Year           |  Integer      |   (required for competition uploads) - Numeric Representation of the year competition is held in            |
+|  Description    |  String       |   (required for competition uploads) - Description of the competition to be shown on the competitions page  |
+|  Genre          |  String       |   (required for competition uploads) - Genre of the competition to be shown on the competitions page        |
+|  Rules          |  String       |   (required for competition uploads) - Genre of the competition to be shown on the competitions page        |
+
+#### Sample Response (type => 'verse')
+
+```
+# Raw JSON
+"{\"data\":{\"id\":\"222\",\"type\":\"verse\",\"attributes\":{\"id\":222,\"audio_path\":\"verses/es_zone_in.mp3\",\"competition_id\":212,\"user_id\":295,\"title\":\"Just a Friend\"}}}"
+
+# Parsed JSON
+{:data=>
+  {:id=>"210",
+   :type=>"verse",
+   :attributes=>
+    {:id=>210,
+     :audio_path=>"verses/es_zone_in.mp3",
+     :competition_id=>204,
+     :user_id=>283,
+     :title=>"Just a Friend"}}}
+```
+
+#### Sample Response Body (type => 'competition')
+
+```
+# Raw JSON
+"{\"data\":{\"id\":\"210\",\"type\":\"competition\",\"attributes\":{\"id\":210,\"track_path\":\"competitions/es_zone_in.mp3\",\"month\":2,\"year\":2021}}}"
+
+# Parsed JSON
+{:data=>
+  {:id=>"207",
+   :type=>"competition",
+   :attributes=>
+    {:id=>207,
+     :track_path=>"competitions/es_zone_in.mp3",
+     :month=>2,
+     :year=>2021}}}
+```
+
+### Competitions Query - GraphQL
+
+#### Request Query
+
+```
+query {
+  competitions {
+    id
+    trackPath
+    month
+    year
+    verses { verseType }
+  }
+}
+```
+
+#### Sample Response Body
+
+```
+# Raw JSON
+"{\"data\":{\"competition\":{\"id\":\"213\",\"trackPath\":\"http://stiedemann.biz/thurman\",\"month\":7,\"year\":2021,\"description\":\"Pidgeot\",\"genre\":\"Struggle\",\"rules\":\"Anistar City\",\"verses\":[{\"id\":\"223\"},{\"id\":\"224\"}]}}}"
+
+# Parsed JSON
+{:data=>
+  {:competition=>
+    {:id=>"213",
+     :trackPath=>"http://stiedemann.biz/thurman",
+     :month=>7,
+     :year=>2021,
+     :description=>"Pidgeot",
+     :genre=>"Struggle",
+     :rules=>"Anistar City",
+     :verses=>[{:id=>"223"}, {:id=>"224"}]
+    }
+  }
+}
+```
+
+### Competitions Query - GraphQL
+
+#### Request Query
+
+```
+query {
+  verses {
+     id
+    competitionId
+    userId
+    audioPath
+    user { userType }
+    votes { voteType }
+    track { trackType }
+  }
+}
+```
+
+#### Sample Response Body
+
+```
+### Raw JSON
+"{\"data\":{\"verses\":[{\"id\":\"231\",\"audioPath\":\"http://zemlak.co/rickey\",\"competitionId\":217,\"userId\":304,\"title\":\"Yog-Sothoth\"},{\"id\":\"232\",\"audioPath\":\"http://hauck.io/jocelyn\",\"competitionId\":218,\"userId\":305,\"title\":\"Azathoth\"},{\"id\":\"233\",\"audioPath\":\"http://lowe.org/sherry.feeney\",\"competitionId\":219,\"userId\":306,\"title\":\"Tsathoggua\"},{\"id\":\"234\",\"audioPath\":\"http://hackett-welch.co/gricelda_barton\",\"competitionId\":220,\"userId\":307,\"title\":\"Dagon\"}]}}"
+
+### Parsed JSON
+{:data=>
+  {:verses=>
+    [{:id=>"231",
+      :audioPath=>"http://zemlak.co/rickey",
+      :competitionId=>217,
+      :userId=>304,
+      :title=>"Yog-Sothoth"},
+     {:id=>"232",
+      :audioPath=>"http://hauck.io/jocelyn",
+      :competitionId=>218,
+      :userId=>305,
+      :title=>"Azathoth"},
+     {:id=>"233",
+      :audioPath=>"http://lowe.org/sherry.feeney",
+      :competitionId=>219,
+      :userId=>306,
+      :title=>"Tsathoggua"},
+     {:id=>"234",
+      :audioPath=>
+       "http://hackett-welch.co/gricelda_barton",
+      :competitionId=>220,
+      :userId=>307,
+      :title=>"Dagon"}]}}
+```
 
 ## Licenses
 
