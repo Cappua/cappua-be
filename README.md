@@ -48,6 +48,8 @@ visit localhost:3000 in your web browser
 
 * We use the [Figaro Gem](https://github.com/laserlemon/figaro) to keep confidential information like API keys secure.
 
+* We use the [Fast JSON API Gem](https://github.com/Netflix/fast_jsonapi) to serialize data for our ReSTful `POST /upload` endpoint.
+
 * The [SimpleCov](https://github.com/simplecov-ruby/simplecov) gem was used to ensure that we covered 100% of our code with unit testing. 
 
 
