@@ -11,6 +11,12 @@ module Types
     def user(id:)
       User.find(id)
     end
+        
+    field :competitions, [Types::CompetitionType], null: false
+    
+    def competitions
+      Competition.all
+    end
 
     field :competition, Types::CompetitionType, null: false do
       argument :id, ID, required: true
