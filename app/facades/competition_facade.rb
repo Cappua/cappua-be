@@ -4,13 +4,7 @@ class CompetitionFacade
     response = UploadService.upload_audio(audio, key)
     if successful_upload?(response)
       competition = Competition.create(
-        track_path: key,
-        month: competition_params[:month],
-        year: competition_params[:year],
-        description: competition_params[:description],
-        genre: competition_params[:genre],
-        rules: competition_params[:rules],
-        image: competition_params[:image]
+        competition_params.merge({track_path: key})
       )
     else
       output = Hash.new
