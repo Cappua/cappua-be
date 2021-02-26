@@ -97,36 +97,36 @@ POST /upload allows for the upload of audio files and the creation of both compe
 #### Sample Response (type => 'verse')
 
 ```
-# Raw JSON
-"{\"data\":{\"id\":\"222\",\"type\":\"verse\",\"attributes\":{\"id\":222,\"audio_path\":\"verses/es_zone_in.mp3\",\"competition_id\":212,\"user_id\":295,\"title\":\"Just a Friend\"}}}"
-
-# Parsed JSON
-{:data=>
-  {:id=>"210",
-   :type=>"verse",
-   :attributes=>
-    {:id=>210,
-     :audio_path=>"verses/es_zone_in.mp3",
-     :competition_id=>204,
-     :user_id=>283,
-     :title=>"Just a Friend"}}}
+{
+  "data": {
+    "id": "210",
+    "type": "verse",
+    "attributes": {
+      "id": "210",
+      "audio_path": "verses/es_zone_in.mp3",
+      "competition_id": "204",
+      "user_id": "283",
+      "title": "Just a Friend"
+     }
+   }
+ }
 ```
 
 #### Sample Response Body (type => 'competition')
 
 ```
-# Raw JSON
-"{\"data\":{\"id\":\"210\",\"type\":\"competition\",\"attributes\":{\"id\":210,\"track_path\":\"competitions/es_zone_in.mp3\",\"month\":2,\"year\":2021}}}"
-
-# Parsed JSON
-{:data=>
-  {:id=>"207",
-   :type=>"competition",
-   :attributes=>
-    {:id=>207,
-     :track_path=>"competitions/es_zone_in.mp3",
-     :month=>2,
-     :year=>2021}}}
+{
+  "data": {
+    "id": "207",
+    "type": "competition",
+    "attributes": {
+      "id": "207",
+      "track_path": "competitions/es_zone_in.mp3",
+      "month": "2",
+      "year": "2021"
+    }
+  }
+}
 ```
 
 ### Competitions Query - GraphQL
@@ -148,20 +148,20 @@ query {
 #### Sample Response Body
 
 ```
-# Raw JSON
-"{\"data\":{\"competition\":{\"id\":\"213\",\"trackPath\":\"http://stiedemann.biz/thurman\",\"month\":7,\"year\":2021,\"description\":\"Pidgeot\",\"genre\":\"Struggle\",\"rules\":\"Anistar City\",\"verses\":[{\"id\":\"223\"},{\"id\":\"224\"}]}}}"
-
-# Parsed JSON
-{:data=>
-  {:competition=>
-    {:id=>"213",
-     :trackPath=>"http://stiedemann.biz/thurman",
-     :month=>7,
-     :year=>2021,
-     :description=>"Pidgeot",
-     :genre=>"Struggle",
-     :rules=>"Anistar City",
-     :verses=>[{:id=>"223"}, {:id=>"224"}]
+{
+  "data": {
+    "competition": {
+      "id": "213",
+      "trackPath": "http://stiedemann.biz/thurman",
+      "month": "7",
+      "year": "2021",
+      "description": "Pidgeot",
+      "genre": "Struggle",
+      "rules": "Anistar City",
+      "verses": [
+        {"id": "223"},
+        {"id": "224"}
+      ]
     }
   }
 }
@@ -190,34 +190,36 @@ query {
 ```
 {
   "data": {
-    "verses": [{
-      "id": "231",
-      "audioPath": "http://zemlak.co/rickey",
-      "competitionId": "217",
-      "userId": "304",
-      "title": "Yog-Sothoth"
+    "verses": [
+      {
+        "id": "231",
+        "audioPath": "http://zemlak.co/rickey",
+        "competitionId": "217",
+        "userId": "304",
+        "title": "Yog-Sothoth"
       },
       {
-      "id": "232",
-      "audioPath": "http://hauck.io/jocelyn",
-      "competitionId": "218",
-      "userId": "305",
-      "title": "Azathoth"
+        "id": "232",
+        "audioPath": "http://hauck.io/jocelyn",
+        "competitionId": "218",
+        "userId": "305",
+        "title": "Azathoth"
       },
       {
-      "id": "233",
-      "audioPath": "http://lowe.org/sherry.feeney",
-      "competitionId": "219",
-      "userId": "306",
-      "title": "Tsathoggua"
+        "id": "233",
+        "audioPath": "http://lowe.org/sherry.feeney",
+        "competitionId": "219",
+        "userId": "306",
+        "title": "Tsathoggua"
       },
       {
-      "id": "234",
-      "audioPath": "http://hackett-welch.co/gricelda_barton",
-      "competitionId": "220",
-      "userId": "307",
-      "title": "Dagon"
-    }]
+        "id": "234",
+        "audioPath": "http://hackett-welch.co/gricelda_barton",
+        "competitionId": "220",
+        "userId": "307",
+        "title": "Dagon"
+      }
+    ]
   }
 }
 ```
@@ -258,9 +260,9 @@ mutation {
   
 ## Contact
 
-#### Brian Liu: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/sagefreemangonzales/)  [Email](mailto:brian.b.liu@gmail.com), [GitHub](https://github.com/the-color-bliu)
-#### Cooper Terrones: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/sagefreemangonzales/)  [Email](mailto:cooper.terrones@outlook.com), [GitHub](https://github.com/coopterrones)
-#### Demaceo Vincent Howard: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/sagefreemangonzales/)  [Email](mailto:sagegonzales15@gmail.com), [GitHub](https://github.com/demaceo)
+#### Brian Liu: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/brian-liu-8356287b/)  [Email](mailto:brian.b.liu@gmail.com), [GitHub](https://github.com/the-color-bliu)
+#### Cooper Terrones: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/cooper-terrones-39b508185/)  [Email](mailto:cooper.terrones@outlook.com), [GitHub](https://github.com/coopterrones)
+#### Demaceo Vincent Howard: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/demaceo/)  [Email](mailto:sagegonzales15@gmail.com), [GitHub](https://github.com/demaceo)
 #### Eugene Theriault: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/eugene-theriault/)  [Email](mailto:sagegonzales15@gmail.com), [GitHub](https://github.com/ETBassist)
 #### Nick King: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/anickking/)  [Email](mailto:nickmaxking@gmail.com), [GitHub](https://github.com/nmking22)
 #### Sage Freeman-Gonzales: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/sagefreemangonzales/)  [Email](mailto:sagegonzales15@gmail.com), [GitHub](https://github.com/SageOfCode)
