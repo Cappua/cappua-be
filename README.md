@@ -53,11 +53,17 @@ visit localhost:3000 in your web browser
 
 ## Learning Goals
 
-  * Consume external APIs
-
+  * Explore and integrate AWS services
+  
+  * Gain familiarity and confidence in working with proper FE & BE teams
+  
+  * Incorporate agile processes such as standups and kanban boards
+  
+  * Create versatile GraphQL queries
+  
   * Refactor code for better code for improved organization/readability
 
-  * Utilize workflow: small commits, descriptive pull requests and code review
+  * Iterate upon collaborative workflow with small commits, descriptive pull requests, and code reviews
 
   * Write thorough and understandable documentation
 
