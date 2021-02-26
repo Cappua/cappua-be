@@ -20,17 +20,7 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
       type: 'verse'
     }
 
-    # TODO: modify the arguments in the .with statement to match what we're
-    # using in the actual controller, or this mock will fail
-    # ALSO WARNING: I'm not setting up vcr for this test because I don't want to record
-    # the response from AWS; it may contain sensitive data
     allow_any_instance_of(Aws::S3::Client).to receive(:put_object).and_return(@mock_response)
-
-    # with({
-    #   bucket: 'cappuatracks',
-    #   key: 'verses/es_zone_in.mp3',
-    #   body: form_body[:audio]
-    # }).
 
     post '/api/v1/upload', params: form_body, headers: { "Content-Type": 'multipart/form-data' }
     json = JSON.parse(response.body, symbolize_names: true)
