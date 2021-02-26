@@ -17,7 +17,13 @@
   
 ## What it does
 
-> This project follows Service-Oriented Architecture (SOA) that provides users with GraphQL endpoints that can be called in the Cappua FE.
+### The Cappua App
+
+> One part crowdsourced songwriting, one part rap battle, Cappua is a monthly hip hop music competition app in which users compete to get their verse included in the given month's featured track. Users upload their take on the month's track and vote on their favorite uploaded verses as they vie for their place in the Cappua Hall of Fame.
+
+### The Cappua BE Repo
+
+> The Cappua BE repo creates both GraphQL queries and a ReSTful endpoint for the FE repo to access data. This repo handles audio file uploads to the Cappua AWS S3 bucket, and stores the S3 bucket file locations for easy FE access via the AWS Cloudfront CDN. Finally, the repo stores vote data and user data in its relational database.
 
 ## How to Install
 
