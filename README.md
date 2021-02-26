@@ -20,7 +20,7 @@
 
 ### The Cappua App
 
-> One part crowdsourced songwriting, one part rap battle, Cappua is a monthly hip hop music competition app in which users compete to get their verse included in the given month's featured track. Users upload their take on the month's track and vote on their favorite uploaded verses as they vie for their place in the Cappua Hall of Fame.
+> One part crowdsourced songwriting, one part rap battle, Cappua is a monthly hip hop music competition app in which users compete to get their verse included in the given month's featured track. Users upload their verse for a month's track and vote on their favorite uploaded verses as they vie for their place in the Cappua Hall of Fame.
 
 ### The Cappua BE Repo
 
@@ -188,33 +188,38 @@ query {
 #### Sample Response Body
 
 ```
-### Raw JSON
-"{\"data\":{\"verses\":[{\"id\":\"231\",\"audioPath\":\"http://zemlak.co/rickey\",\"competitionId\":217,\"userId\":304,\"title\":\"Yog-Sothoth\"},{\"id\":\"232\",\"audioPath\":\"http://hauck.io/jocelyn\",\"competitionId\":218,\"userId\":305,\"title\":\"Azathoth\"},{\"id\":\"233\",\"audioPath\":\"http://lowe.org/sherry.feeney\",\"competitionId\":219,\"userId\":306,\"title\":\"Tsathoggua\"},{\"id\":\"234\",\"audioPath\":\"http://hackett-welch.co/gricelda_barton\",\"competitionId\":220,\"userId\":307,\"title\":\"Dagon\"}]}}"
-
-### Parsed JSON
-{:data=>
-  {:verses=>
-    [{:id=>"231",
-      :audioPath=>"http://zemlak.co/rickey",
-      :competitionId=>217,
-      :userId=>304,
-      :title=>"Yog-Sothoth"},
-     {:id=>"232",
-      :audioPath=>"http://hauck.io/jocelyn",
-      :competitionId=>218,
-      :userId=>305,
-      :title=>"Azathoth"},
-     {:id=>"233",
-      :audioPath=>"http://lowe.org/sherry.feeney",
-      :competitionId=>219,
-      :userId=>306,
-      :title=>"Tsathoggua"},
-     {:id=>"234",
-      :audioPath=>
-       "http://hackett-welch.co/gricelda_barton",
-      :competitionId=>220,
-      :userId=>307,
-      :title=>"Dagon"}]}}
+{
+  "data": {
+    "verses": [{
+      "id": "231",
+      "audioPath": "http://zemlak.co/rickey",
+      "competitionId": "217",
+      "userId": "304",
+      "title": "Yog-Sothoth"
+      },
+      {
+      "id": "232",
+      "audioPath": "http://hauck.io/jocelyn",
+      "competitionId": "218",
+      "userId": "305",
+      "title": "Azathoth"
+      },
+      {
+      "id": "233",
+      "audioPath": "http://lowe.org/sherry.feeney",
+      "competitionId": "219",
+      "userId": "306",
+      "title": "Tsathoggua"
+      },
+      {
+      "id": "234",
+      "audioPath": "http://hackett-welch.co/gricelda_barton",
+      "competitionId": "220",
+      "userId": "307",
+      "title": "Dagon"
+    }]
+  }
+}
 ```
 
 ### createVote mutation - GraphQL
