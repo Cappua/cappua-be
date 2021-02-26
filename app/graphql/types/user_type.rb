@@ -4,6 +4,6 @@ module Types
     field :name, String, null: false
     field :email, String, null: false
     field :image, String, null: true
-    field :verse, Types::VerseType, null: true
+    field :verses, [Types::VerseType], null: true
   end
 end
