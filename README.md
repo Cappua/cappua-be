@@ -44,7 +44,7 @@ visit localhost:3000 in your web browser
 
 * This app uses Rails version `5.2.4.4`
 
-* We use the [Faraday Gem](https://github.com/lostisland/faraday) to make calls to our API service.
+* We use the [AWS SDK for Ruby Gem](https://github.com/aws/aws-sdk-ruby) to upload audio files to our AWS S3 Bucket.
 
 * We use the [Figaro Gem](https://github.com/laserlemon/figaro) to keep confidential information like API keys secure.
 
