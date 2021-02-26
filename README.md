@@ -35,7 +35,7 @@ git clone git@github.com:Cappua/cappua-be.git
 cd cappua-be
 bundle install
 rake db:{create,migrate}
-firgaro install
+figaro install
 rails server
 visit localhost:3000 in your web browser
 ```
