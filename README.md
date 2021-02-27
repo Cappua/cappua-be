@@ -57,7 +57,7 @@ visit localhost:3000 in your web browser
 
   * Explore and integrate AWS services
   
-  * Gain familiarity and confidence in working with proper FE & BE teams
+  * Gain familiarity and confidence in working with full FE & BE teams
   
   * Incorporate agile processes such as standups and kanban boards
   
