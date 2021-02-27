@@ -35,7 +35,7 @@ For usage on your local machine follow the instructions listed below:
 git clone git@github.com:Cappua/cappua-be.git
 cd cappua-be
 bundle install
-rake db:{create,migrate}
+rake db:{create,migrate,seed}
 figaro install
 rails server
 visit localhost:3000 in your web browser
