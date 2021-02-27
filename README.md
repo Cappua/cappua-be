@@ -11,6 +11,7 @@
   - [How to Install](#how-to-install)
   - [Dependencies](#dependencies)
   - [Learning Goals](#learning-goals)
+  - [Project Diagram](#project-diagram)
   - [Schema](#schema)
   - [API Contract](#api-contract)
   - [Licenses](#licenses)
@@ -68,6 +69,10 @@ visit localhost:3000 in your web browser
   * Iterate upon collaborative workflow with small commits, descriptive pull requests, and code reviews
 
   * Write thorough and understandable documentation
+
+## Project Diagram
+
+![Cappua Diagram](https://user-images.githubusercontent.com/68172332/109396432-c35af600-78ee-11eb-97a8-3fd95b0d6baf.png)
 
 ## Schema
 
