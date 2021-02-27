@@ -72,7 +72,7 @@ visit localhost:3000 in your web browser
 
 ## Project Diagram
 
-![Cappua Diagram](https://user-images.githubusercontent.com/68172332/109396432-c35af600-78ee-11eb-97a8-3fd95b0d6baf.png)
+![Cappua Diagram (1)](https://user-images.githubusercontent.com/68172332/109397255-19319d00-78f3-11eb-8348-9562657e240e.png)
 
 ## Schema
 
