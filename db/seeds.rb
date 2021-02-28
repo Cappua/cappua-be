@@ -9,7 +9,7 @@
 user = User.create(
   name: 'Biz Markie',
   email: 'justafriend@example.com',
-  user_sub: "mosk_sub",
+  user_sub: "mock_sub",
   image: 'https://media2.fdncms.com/riverfronttimes/imager/u/slideshow/2654166/bizmarkie.jpg'
 )
 
