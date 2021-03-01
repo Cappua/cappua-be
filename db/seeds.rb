@@ -35,10 +35,11 @@ march_competition = Competition.create(
 )
 
 10.times do |index|
+  name = Faker::Hipster.words[0].capitalize
   Verse.create(
     audio_path: "/verses/2021/03/verse_#{index}.mp3",
     user_id: (index + 2),
-    title: "verse_#{index}",
+    title: "#{name}",
     competition: march_competition
   )
 end
@@ -81,10 +82,11 @@ feb_competition = Competition.create(
 )
 
 10.times do |index|
+  name = Faker::Hipster.words[0].capitalize
   Verse.create(
     audio_path: "/verses/2021/03/verse_#{index}.mp3",
     user_id: (index + 2),
-    title: "verse_#{index}",
+    title: "#{name}",
     competition: feb_competition
   )
 end
@@ -127,10 +129,11 @@ jan_competition = Competition.create(
 )
 
 10.times do |index|
+  name = Faker::Hipster.words[0].capitalize
   Verse.create(
     audio_path: "/verses/2021/01/verse_#{index}.mp3",
     user_id: (index + 2),
-    title: "verse_#{index}",
+    title: "#{name}",
     competition: feb_competition
   )
 end
