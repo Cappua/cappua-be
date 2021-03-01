@@ -31,9 +31,10 @@ ActiveRecord::Schema.define(version: 2021_02_28_235014) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.binary "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "user_sub"
+    t.string "image", default: "null"
   end
 
   create_table "verses", force: :cascade do |t|

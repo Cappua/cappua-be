@@ -9,6 +9,7 @@
 user = User.create(
   name: 'Biz Markie',
   email: 'justafriend@example.com',
+  user_sub: "mock_sub",
   image: 'https://media2.fdncms.com/riverfronttimes/imager/u/slideshow/2654166/bizmarkie.jpg'
 )
 
@@ -27,6 +28,7 @@ march_competition = Competition.create(
   User.create(
     name: Faker::TvShows::TheFreshPrinceOfBelAir.character,
     email: Faker::Internet.email,
+    user_sub: "mosk_sub",
     image: "https://pbs.twimg.com/profile_images/1237550450/mstom_400x400.jpg"
   )
 end

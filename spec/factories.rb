@@ -3,6 +3,7 @@ FactoryBot.define do
     name { Faker::TvShows::FamilyGuy.character }
     email { Faker::Internet.email }
     image { Faker::Internet.url }
+    user_sub { Faker::JapaneseMedia::DragonBall.planet }
   end
 
   factory :competition do
