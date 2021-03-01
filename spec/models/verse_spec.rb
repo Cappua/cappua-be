@@ -17,7 +17,7 @@ describe Verse, type: :model do
       @user4 = create(:user)
       @user5 = create(:user)
 
-      @competition1 = create(:competition, month: 1)
+      @competition1 = create(:competition, month: Verse.previous_month)
 
       @verse1 = create(:verse, user_id: @user1.id, competition_id: @competition1.id)
       @verse2 = create(:verse, user_id: @user2.id, competition_id: @competition1.id)

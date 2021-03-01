@@ -38,7 +38,7 @@ describe "A graphql query to find last month's winner" do
     expect(last_winner[:audioPath]).to eq(verse3.audio_path)
     expect(last_winner).to have_key(:competition)
     expect(last_winner[:competition]).to have_key(:month)
-    expect(last_winner[:competition][:month]).to eq(1)
+    expect(last_winner[:competition][:month]).to eq(Verse.previous_month)
     expect(last_winner).to have_key(:user)
     expect(last_winner[:user]).to have_key(:name)
     expect(last_winner[:user][:name]).to eq(user3.name)
