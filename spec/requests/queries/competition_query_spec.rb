@@ -4,7 +4,7 @@ describe 'It can get a single competition' do
   it 'through graphql' do
     competition = create(:competition)
     verses = create_list(:verse, 2, competition: competition)
-    query_string = "query {competition(id: #{competition.id}) {
+    query_string = "query {competition(month: #{competition.month}) {
                       id
                       trackPath
                       month

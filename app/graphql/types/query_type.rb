@@ -11,19 +11,19 @@ module Types
     def user(id:)
       User.find(id)
     end
-        
+
     field :competitions, [Types::CompetitionType], null: false
-    
+
     def competitions
       Competition.all
     end
 
     field :competition, Types::CompetitionType, null: false do
-      argument :id, ID, required: true
+      argument :month, Int, required: true
     end
 
-    def competition(id:)
-      Competition.find(id)
+    def competition(month:)
+      Competition.find_by(month: month)
     end
 
     field :verse, Types::VerseType, null: false do
