@@ -1,4 +1,6 @@
 class Verse < ApplicationRecord
+  validates :email, uniqueness: true
+  
   belongs_to :user
   belongs_to :competition
   has_many :votes
