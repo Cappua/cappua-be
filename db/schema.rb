@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_28_235014) do
+ActiveRecord::Schema.define(version: 2021_03_01_023212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2021_02_28_235014) do
     t.string "genre"
     t.string "rules"
     t.string "image", default: "null"
-    t.string "verse_instrumental"
   end
 
   create_table "users", force: :cascade do |t|

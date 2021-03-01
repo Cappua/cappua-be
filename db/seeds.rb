@@ -21,7 +21,7 @@ jan_competition = Competition.create(
   genre: 'East Coast Hip Hop',
   rules: 'Verse submissions are due by March 14th. Final vote tally and winner announcement on March 31st. Rappers can edit track, but most stay within 16 bars.',
   image: 'https://i.ytimg.com/vi/5CzsXvAZ6R4/mqdefault.jpg',
-  verse_instrumental: '/competitions/march_wu_tang_forever_instrumental_verse.mp3'
+  # verse_instrumental: '/competitions/march_wu_tang_forever_instrumental_verse.mp3'
 )
 
 feb_competition = Competition.create(
@@ -32,7 +32,7 @@ feb_competition = Competition.create(
   genre: 'East Coast Hip Hop',
   rules: 'Verse submissions are due by March 14th. Final vote tally and winner announcement on March 31st. Rappers can edit track, but most stay within 16 bars.',
   image: 'https://i.ytimg.com/vi/5CzsXvAZ6R4/mqdefault.jpg',
-  verse_instrumental: '/competitions/march_wu_tang_forever_instrumental_verse.mp3'
+  # verse_instrumental: '/competitions/march_wu_tang_forever_instrumental_verse.mp3'
 )
 
 march_competition = Competition.create(
@@ -43,7 +43,7 @@ march_competition = Competition.create(
   genre: 'East Coast Hip Hop',
   rules: 'Verse submissions are due by March 14th. Final vote tally and winner announcement on March 31st. Rappers can edit track, but most stay within 16 bars.',
   image: 'https://i.ytimg.com/vi/5CzsXvAZ6R4/mqdefault.jpg',
-  verse_instrumental: '/competitions/march_wu_tang_forever_instrumental_verse.mp3'
+  # verse_instrumental: '/competitions/march_wu_tang_forever_instrumental_verse.mp3'
 )
 
 10.times do |index|
