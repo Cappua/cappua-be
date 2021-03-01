@@ -17,7 +17,7 @@ describe Verse, type: :model do
       @user4 = create(:user)
       @user5 = create(:user)
 
-      @competition1 = create(:competition, month: Verse.previous_month)
+      @competition1 = create(:competition, month: 1)
 
       @verse1 = create(:verse, user_id: @user1.id, competition_id: @competition1.id)
       @verse2 = create(:verse, user_id: @user2.id, competition_id: @competition1.id)
@@ -38,7 +38,7 @@ describe Verse, type: :model do
     end
 
     it "top_three" do
-      competition2 = create(:competition, month: 2)
+      competition2 = create(:competition, month: Verse.current_month)
       verse6 = create(:verse, user_id: @user1.id, competition_id: competition2.id)
       verse7 = create(:verse, user_id: @user2.id, competition_id: competition2.id)
       verse8 = create(:verse, user_id: @user3.id, competition_id: competition2.id)
