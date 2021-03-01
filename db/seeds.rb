@@ -13,6 +13,17 @@ user = User.create(
   image: 'https://media2.fdncms.com/riverfronttimes/imager/u/slideshow/2654166/bizmarkie.jpg'
 )
 
+feb_competition = Competition.create(
+  track_path: '/competitions/feb_some_comp.mp3',
+  month: 2,
+  year: 2021,
+  description: "This month's theme is East Coast Hip Hop. Bring your Wu Tang style to this one.",
+  genre: 'East Coast Hip Hop',
+  rules: 'Verse submissions are due by March 14th. Final vote tally and winner announcement on March 31st. Rappers can edit track, but most stay within 16 bars.',
+  image: 'https://i.ytimg.com/vi/5CzsXvAZ6R4/mqdefault.jpg',
+  verse_instrumental: '/competitions/march_wu_tang_forever_instrumental_verse.mp3'
+)
+
 march_competition = Competition.create(
   track_path: '/competitions/march_wu_tang_forever.mp3',
   month: 3,
@@ -26,7 +37,7 @@ march_competition = Competition.create(
 
 10.times do |index|
   User.create(
-    name: Faker::TvShows::TheFreshPrinceOfBelAir.character,
+    name: Faker::Cannabis.strain,
     email: Faker::Internet.email,
     user_sub: "mosk_sub",
     image: "https://pbs.twimg.com/profile_images/1237550450/mstom_400x400.jpg"
