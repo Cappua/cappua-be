@@ -13,13 +13,15 @@ user = User.create(
   image: 'https://media2.fdncms.com/riverfronttimes/imager/u/slideshow/2654166/bizmarkie.jpg'
 )
 
-competition = Competition.create(
-  track_path: '/competitions/nu_metal_jamboree',
-  month: 2,
+march_competition = Competition.create(
+  track_path: '/competitions/march_wu_tang_forever.mp3',
+  month: 3,
   year: 2021,
-  description: 'Fred Durst and Stuff',
-  genre: 'Nu Metal Jamboree',
-  rules: '4 weeks'
+  description: "This month's theme is East Coast Hip Hop. Bring your Wu Tang style to this one.",
+  genre: 'East Coast Hip Hop',
+  rules: 'Verse submissions are due by March 14th. Final vote tally and winner announcement on March 31st. Rappers can edit track, but most stay within 16 bars.',
+  image: 'https://i.ytimg.com/vi/5CzsXvAZ6R4/mqdefault.jpg'
+  # verse_instrumental: '/competitions/march_wu_tang_forever_instrumental_verse.mp3'
 )
 
 10.times do |index|
