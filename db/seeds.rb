@@ -55,6 +55,7 @@ march_competition = Competition.create(
   )
 end
 
+# Create verses for jan/feb/march competitions
 9.times do |index|
   Verse.create(
     audio_path: "/verses/2021/03/verse_#{index}.mp3",
@@ -64,6 +65,25 @@ end
   )
 end
 
+9.times do |index|
+  Verse.create(
+    audio_path: "/verses/2021/03/verse_#{index}.mp3",
+    user_id: (index + 2),
+    title: "verse_#{index}",
+    competition: feb_competition
+  )
+end
+
+9.times do |index|
+  Verse.create(
+    audio_path: "/verses/2021/03/verse_#{index}.mp3",
+    user_id: (index + 2),
+    title: "verse_#{index}",
+    competition: jan_competition
+  )
+end
+
+# Create vote seeds for march competition
 9.times do |index|
   Vote.create(
     user_id: (index + 2),
@@ -88,4 +108,58 @@ end
 Vote.create(
   user: user,
   verse_id: 7
+)
+
+# Create vote seeds for feb competition
+9.times do |index|
+  Vote.create(
+    user_id: (index + 2),
+    verse_id: (index + 10)
+  )
+end
+
+3.times do |index|
+  Vote.create(
+    user_id: (index + 2),
+    verse_id: 18
+  )
+end
+
+2.times do |index|
+  Vote.create(
+    user_id: (index + 2),
+    verse_id: 17
+  )
+end
+
+Vote.create(
+  user: user,
+  verse_id: 16
+)
+
+# Create vote seeds for jan competition
+9.times do |index|
+  Vote.create(
+    user_id: (index + 2),
+    verse_id: (index + 19)
+  )
+end
+
+3.times do |index|
+  Vote.create(
+    user_id: (index + 2),
+    verse_id: 27
+  )
+end
+
+2.times do |index|
+  Vote.create(
+    user_id: (index + 2),
+    verse_id: 26
+  )
+end
+
+Vote.create(
+  user: user,
+  verse_id: 25
 )
