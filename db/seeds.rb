@@ -14,7 +14,6 @@ user = User.create(
   image: 'https://media2.fdncms.com/riverfronttimes/imager/u/slideshow/2654166/bizmarkie.jpg'
 )
 
-# zuck, winkle, musk, bezos, fauci, clinton, ted cruz
 images = [
   'https://media.gq.com/photos/5594122baf57fbd15c06a6cb/4:3/w_800%2Ch_600%2Cc_limit/mark-zuckerberg-facebook.jpg',
   'https://pbs.twimg.com/profile_images/1237550450/mstom_400x400.jpg',
