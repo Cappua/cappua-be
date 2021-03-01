@@ -5,10 +5,14 @@ class Verse < ApplicationRecord
 
   def self.last_month_winner
     competition = Competition.find_by(month: previous_month)
-    vote_count = competition.verses.max do |verse|
-      verse.votes.count
+    if competition
+      vote_count = competition.verses.max do |verse|
+        verse.votes.count
+      end
+      vote_count
+    else
+      0
     end
-    vote_count
   end
 
   def self.previous_month
