@@ -28,7 +28,7 @@ describe 'competition facade' do
 
     expect(competition).to be_a(Competition)
     expect(competition.id).to be_a(Integer)
-    expect(competition.track_path).to eq("competitions/es_zone_in.mp3")
+    expect(competition.track_path).to eq("/competitions/es_zone_in.mp3")
     expect(competition.month).to eq(2)
     expect(competition.year).to eq(2021)
     expect(competition.description).to eq("This month's theme is club bangers.")

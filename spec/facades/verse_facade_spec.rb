@@ -26,7 +26,7 @@ describe 'verse facade' do
 
     expect(verse).to be_a(Verse)
     expect(verse.id).to be_a(Integer)
-    expect(verse.audio_path).to eq("verses/2021/03/es_zone_in.mp3")
+    expect(verse.audio_path).to eq("/verses/2021/03/es_zone_in.mp3")
     expect(verse.user_id).to eq(user.id)
     expect(verse.competition_id).to eq(competition.id)
     expect(verse.title).to eq('Just a Friend')
