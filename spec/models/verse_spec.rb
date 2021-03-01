@@ -17,7 +17,7 @@ describe Verse, type: :model do
       @user4 = create(:user)
       @user5 = create(:user)
 
-      @competition1 = create(:competition, month: 1)
+      @competition1 = create(:competition, month: Verse.previous_month)
 
       @verse1 = create(:verse, user_id: @user1.id, competition_id: @competition1.id)
       @verse2 = create(:verse, user_id: @user2.id, competition_id: @competition1.id)
@@ -38,7 +38,7 @@ describe Verse, type: :model do
     end
 
     it "top_three" do
-      competition2 = create(:competition, month: 2)
+      competition2 = create(:competition, month: Verse.current_month)
       verse6 = create(:verse, user_id: @user1.id, competition_id: competition2.id)
       verse7 = create(:verse, user_id: @user2.id, competition_id: competition2.id)
       verse8 = create(:verse, user_id: @user3.id, competition_id: competition2.id)
@@ -51,7 +51,7 @@ describe Verse, type: :model do
       vote10 = Vote.create(verse_id: verse6.id, user_id: @user3.id)
       vote11 = Vote.create(verse_id: verse8.id, user_id: @user4.id)
       vote12 = Vote.create(verse_id: verse7.id, user_id: @user5.id)
-      
+
       expect(Verse.top_three).to eq([verse8, verse7, verse6])
     end
   end
