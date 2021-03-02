@@ -2,6 +2,8 @@ class Api::V1::UploadController < ApplicationController
   def create
     if valid_verse?
       render_verse(verse_params, params[:audio])
+    elsif verse_no_title?
+      render_title_error
     elsif invalid_verse?
       render_invalid_verse
     elsif valid_competition?
@@ -22,6 +24,10 @@ class Api::V1::UploadController < ApplicationController
   end
 
   def valid_verse?
+    params[:type] == 'verse' && valid_ids? && params[:title]
+  end
+
+  def verse_no_title?
     params[:type] == 'verse' && valid_ids?
   end
 
@@ -58,6 +64,13 @@ class Api::V1::UploadController < ApplicationController
       verse_output = VerseSerializer.new(output)
       render json: verse_output
     end
+  end
+
+  def render_title_error
+    output = Hash.new
+    output[:error] = 'Title parameter is required for verse upload.'
+
+    render json: output, :status => 400
   end
 
   def render_invalid_verse
