@@ -21,7 +21,7 @@
 
 ### The Cappua App
 
-> One part crowdsourced songwriting, one part rap battle, Cappua is a monthly hip hop music competition app in which users compete to get their verse included in the given month's featured track. Users upload their verse for a month's track and vote on their favorite uploaded verses as they vie for their place in the Cappua Hall of Fame.
+> One part crowdsourced songwriting, one part rap battle, Cappua is a monthly hip hop music competition app in which users compete to get their verse included in the given month's featured track. Users upload their verse for a month's track and vote on their favorite uploaded verses as they vie for their place on Olympus, the Cappua Hall of Fame.
 
 ### The Cappua BE Repo
 
