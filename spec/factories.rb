@@ -13,6 +13,7 @@ FactoryBot.define do
     description { Faker::Games::Pokemon.name }
     genre { Faker::Games::Pokemon.move }
     rules { Faker::Games::Pokemon.location }
+    title { Faker::JapaneseMedia::DragonBall.planet }
   end
 
   factory :verse do
