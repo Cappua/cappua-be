@@ -5,7 +5,7 @@ class Competition < ApplicationRecord
                         :description,
                         :genre,
                         :rules,
-                        :image ,
+                        :image,
                         :title
   has_many :verses
 end
