@@ -4,12 +4,12 @@ class Api::V1::UploadController < ApplicationController
       render_verse(verse_params, params[:audio])
     elsif verse_no_title?
       render_title_error
-    elsif invalid_verse?
-      render_invalid_verse
+    elsif verse_bad_ids?
+      render_verse_bad_ids
     elsif valid_competition?
       render_valid_competition(competition_params, params[:audio])
     elsif invalid_competition?
-      render_invalid_competition
+      render_invalid_competition(competition_params)
     else
       render_invalid_type
     end
@@ -31,12 +31,40 @@ class Api::V1::UploadController < ApplicationController
     params[:type] == 'verse' && valid_ids?
   end
 
-  def invalid_verse?
+  def verse_bad_ids?
     params[:type] == 'verse'
   end
 
   def valid_competition?
-    (1..12).to_a.include?(params[:month].to_i) && params[:year].present? && params[:type] == 'competition'  # && user == admin
+    valid_month? && valid_year? && valid_description? && valid_genre? && valid_rules? && valid_image? && valid_title? && params[:type] == 'competition'  # && user == admin
+  end
+
+  def valid_month?
+    (1..12).to_a.include?(params[:month].to_i)
+  end
+
+  def valid_year?
+    params[:year].present?
+  end
+
+  def valid_description?
+    params[:description].present?
+  end
+
+  def valid_genre?
+    params[:genre].present?
+  end
+
+  def valid_rules?
+    params[:rules].present?
+  end
+
+  def valid_image?
+    params[:image].present?
+  end
+
+  def valid_title?
+    params[:title].present?
   end
 
   def invalid_competition?
@@ -73,7 +101,7 @@ class Api::V1::UploadController < ApplicationController
     render json: output, :status => 400
   end
 
-  def render_invalid_verse
+  def render_verse_bad_ids
     output = Hash.new
     output[:error] = 'Invalid user or competition id.'
 
@@ -91,11 +119,28 @@ class Api::V1::UploadController < ApplicationController
     end
   end
 
-  def render_invalid_competition
+  def render_invalid_competition(competition_params)
+    missing_params = find_missing_parameters(competition_params)
+
     output = Hash.new
-    output[:error] = 'Month and year must be included and valid in competition upload requests.'
+    if missing_params.length == 1
+      output[:error] = "#{missing_params[0].capitalize} parameter must be included for competition upload requests."
+    else
+      output[:error] = "#{missing_params.join(', ').capitalize} parameters must be included for competition upload requests."
+    end
 
     render json: output, :status => 400
+  end
+
+  def find_missing_parameters(competition_params)
+    missing_params = []
+    missing_params << 'month' unless competition_params[:month]
+    missing_params << 'year' unless competition_params[:year]
+    missing_params << 'genre' unless competition_params[:genre]
+    missing_params << 'rules' unless competition_params[:rules]
+    missing_params << 'image' unless competition_params[:image]
+    missing_params << 'title' unless competition_params[:title]
+    missing_params << 'description' unless competition_params[:description]
   end
 
   def render_invalid_type
