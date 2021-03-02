@@ -3,8 +3,8 @@
 ![](https://img.shields.io/badge/Ruby-2.5.3-orange)
 
 # Cappua BE
-![logoflash](https://i.imgur.com/76Mzhkl.gif)
-<!--![logo](https://user-images.githubusercontent.com/68172332/109255025-6d803400-77b0-11eb-82a9-e552c81a5661.png)-->
+
+![logo](https://user-images.githubusercontent.com/68172332/109255025-6d803400-77b0-11eb-82a9-e552c81a5661.png)
 
 ## Table of Contents
   - [What it does](#what-it-does)
@@ -15,6 +15,7 @@
   - [Schema](#schema)
   - [API Contract](#api-contract)
   - [Licenses](#licenses)
+  - [Backend Team](#backend-team)
   - [Contact](#contact)
   
 ## What it does
@@ -278,13 +279,39 @@ mutation {
 
   * Ruby 2.5.3
   * Rails 5.2.4.4
+
+## BackEnd Team
+
+<h4>Brian Liu</h4>
+<img src="https://avatars.githubusercontent.com/u/67594471?s=460&u=55cc76d3d09defb7d0bc2c8f434d75cfca7d8076&v=4" alt="Brian Liu"
+ width="150" height="auto" style="float: left" />
+
+[GitHub Profile](https://github.com/the-color-bliu)
+
+<h4>Eugene Theriault</h4>
+<img src="https://avatars.githubusercontent.com/u/45305677?s=460&u=916234021c3105b868dd45a2660ec873d7f7d045&v=4" alt="Eugene Theriault"
+ width="150" height="auto" style="float: left" />
+
+[GitHub Profile](https://github.com/ETBassist)
+
+<h4>Nick King</h4>
+<img src="https://avatars.githubusercontent.com/u/68172332?s=460&u=8b0b3766e31ff6be0d1dea0a8591483dc1bdd870&v=4" alt="Nick King"
+ width="150" height="auto" style="float: left" />
+
+[GitHub Profile](https://github.com/nmking22)
+
+<h4>Sage Freeman-Gonzales</h4>
+<img src="https://avatars.githubusercontent.com/u/65799246?s=460&u=67367b4bf3eb0785908f7b7892abcc67efdf458c&v=4" alt="Sage Freeman-Gonzales"
+ width="150" height="auto" style="float: left" />
+
+[GitHub Profile](https://github.com/SageOfCode)
   
 ## Contact
 
 #### Brian Liu: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/brian-liu-8356287b/)  [Email](mailto:brian.b.liu@gmail.com), [GitHub](https://github.com/the-color-bliu)
 #### Cooper Terrones: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/cooper-terrones-39b508185/)  [Email](mailto:cooper.terrones@outlook.com), [GitHub](https://github.com/coopterrones)
-#### Demaceo Vincent Howard: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/demaceo/)  [Email](mailto:sagegonzales15@gmail.com), [GitHub](https://github.com/demaceo)
-#### Eugene Theriault: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/eugene-theriault/)  [Email](mailto:sagegonzales15@gmail.com), [GitHub](https://github.com/ETBassist)
+#### Demaceo Vincent Howard: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/demaceo/) [Email](Hdemaceo@gmail.com),  [GitHub](https://github.com/demaceo)
+#### Eugene Theriault: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/eugene-theriault/)  [Email](mailto:hybridbassist@gmai.com), [GitHub](https://github.com/ETBassist)
 #### Nick King: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/anickking/)  [Email](mailto:nickmaxking@gmail.com), [GitHub](https://github.com/nmking22)
 #### Sage Freeman-Gonzales: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/sagefreemangonzales/)  [Email](mailto:sagegonzales15@gmail.com), [GitHub](https://github.com/SageOfCode)
 
