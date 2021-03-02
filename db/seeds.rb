@@ -142,21 +142,28 @@ Vote.create(
 
 # Create January competition, verses, votes
 jan_competition = Competition.create(
-  track_path: '/competitions/jan_some_comp.mp3',
+  track_path: '/competitions/jan_whats_dat_money.mp3',
   month: 1,
   year: 2021,
-  description: "RUN THEM JEWELS FAST. Make Killer Mike and El-P proud with your verses.",
-  genre: 'East Coast Hip Hop',
-  rules: 'Verse submissions are due by March 14th. Final vote tally and winner announcement on March 31st. Rappers can edit track, but most stay within 16 bars.',
-  image: 'https://i.ytimg.com/vi/5CzsXvAZ6R4/mqdefault.jpg',
+  description: "G Funk, Trap Hybrid.",
+  genre: 'G Funk Trap Hybrid',
+  rules: 'Verse submissions are due by January 14th. Final vote tally and winner announcement on February 1st. Rappers can edit track, but most stay within 16 bars.',
+  image: 'https://static.billboard.com/files/media/Lil-Dicky-2016-billboard-1548-compressed.jpg',
   title: "What's Dat Money"
 )
+
+def zero_to_four(number)
+  until 0 <= number && number < 4
+    number -= 4
+  end
+  number
+end
 
 9.times do |index|
   word = Faker::Hipster.words[0].capitalize
   word_2 = Faker::Hipster.words[1].capitalize
   Verse.create(
-    audio_path: "/verses/2021/01/verse_#{index}.mp3",
+    audio_path: "/verses/2021/01/verse_#{zero_to_four(index)}.mp3",
     user_id: (index + 2),
     title: "#{word} #{word_2}",
     competition: jan_competition
