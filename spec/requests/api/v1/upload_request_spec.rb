@@ -96,7 +96,8 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
       audio: @sample_verse,
       user_id: 1,
       competition_id: 1,
-      type: 'verse'
+      type: 'verse',
+      title: 'verse title'
     }
 
     allow_any_instance_of(Aws::S3::Client).to receive(:put_object).and_return(@mock_response)
@@ -109,6 +110,27 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
     expect(json[:error]).to eq('Invalid user or competition id.')
   end
 
+  it 'sends 400 response for verse upload requests with missing title' do
+    user = create(:user)
+    competition = create(:competition)
+
+    form_body = {
+      audio: @sample_verse,
+      user_id: user.id,
+      competition_id: competition.id,
+      type: 'verse'
+    }
+
+    allow_any_instance_of(Aws::S3::Client).to receive(:put_object).and_return(@mock_response)
+
+    post '/api/v1/upload', params: form_body, headers: { "Content-Type": 'multipart/form-data' }
+    json = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response.status).to eq(400)
+    expect(json).to be_a(Hash)
+    expect(json[:error]).to eq('Title parameter is required for verse upload.')
+  end
+
   it 'sends 500 response for verse upload requests that do not successfully upload' do
     user = create(:user)
     competition = create(:competition)
@@ -116,7 +138,8 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
       audio: @sample_verse,
       user_id: user.id,
       competition_id: competition.id,
-      type: 'verse'
+      type: 'verse',
+      title: 'verse title'
     }
     mock_response = AWSResponse.new(nil)
 
