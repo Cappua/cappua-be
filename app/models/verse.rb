@@ -1,4 +1,9 @@
 class Verse < ApplicationRecord
+  validates_presence_of :audio_path,
+                        :user_id,
+                        :title,
+                        :competition_id
+
   belongs_to :user
   belongs_to :competition
   has_many :votes
