@@ -17,12 +17,13 @@ describe 'It can get all competitions' do
                         rules
                         image
                         verses { id }
+                        title
                       }
                     }"
 
     post graphql_path, params: { query: query_string }
     result = JSON.parse(response.body, symbolize_names: true)
-    
+
     expect(response).to be_successful
 
     expect(result).to have_key(:data)
@@ -49,6 +50,8 @@ describe 'It can get all competitions' do
       expect(comp_data).to have_key(:image)
       expect(comp_data).to have_key(:verses)
       expect(comp_data[:verses]).to be_an(Array)
+      expect(comp_data).to have_key(:title)
+      expect(comp_data[:title]).to be_a(String)
     end
   end
 end
