@@ -80,7 +80,7 @@ visit localhost:3000 in your web browser
 
 ## API Contract
 
-Our BE API uses a combination of ReSTful endpoints and GraphQL queries. Our single ReSTful endpoint, `POST /upload`, handles audio file uploads into our nested AWS S3 bucket, and creates related entries in our database. Our GraphQL queries handle all the rest of our CRUD functionality.
+Our BE API uses a combination of a ReSTful endpoint and GraphQL queries. Our single ReSTful endpoint, `POST /upload`, handles audio file uploads into our nested AWS S3 bucket, and creates related entries in our database. Our GraphQL queries handle all the rest of our CRUD functionality.
 
 ### POST /upload - ReSTful Endpoint
 
