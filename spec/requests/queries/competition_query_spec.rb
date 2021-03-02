@@ -14,6 +14,7 @@ describe 'It can get a single competition' do
                       rules
                       image
                       verses { id }
+                      title
                     }}"
 
     post graphql_path, params: { query: query_string }
@@ -44,5 +45,7 @@ describe 'It can get a single competition' do
     expect(comp_data[:image]).to eq(competition.image)
     expect(comp_data).to have_key(:verses)
     expect(comp_data[:verses]).to be_an(Array)
+    expect(comp_data).to have_key(:title)
+    expect(comp_data[:title]).to be_a(String)
   end
 end

@@ -42,7 +42,7 @@ class Api::V1::UploadController < ApplicationController
   end
 
   def competition_params
-    params.permit(:month, :year, :description, :genre, :rules)
+    params.permit(:month, :year, :description, :genre, :rules, :image, :title)
   end
 
   def has_error?(output)

@@ -21,7 +21,7 @@
 
 ### The Cappua App
 
-> One part crowdsourced songwriting, one part rap battle, Cappua is a monthly hip hop music competition app in which users compete to get their verse included in the given month's featured track. Users upload their verse for a month's track and vote on their favorite uploaded verses as they vie for their place in the Cappua Hall of Fame.
+> One part crowdsourced songwriting, one part rap battle, Cappua is a monthly hip hop music competition app in which users compete to get their verse included in the given month's featured track. Users upload their verse for a month's track and vote on their favorite uploaded verses as they vie for their place on Olympus, the Cappua Hall of Fame.
 
 ### The Cappua BE Repo
 
@@ -80,7 +80,7 @@ visit localhost:3000 in your web browser
 
 ## API Contract
 
-Our BE API uses a combination of ReSTful endpoints and GraphQL queries. Our single ReSTful endpoint, `POST /upload`, handles audio file uploads into our nested AWS S3 bucket, and creates related entries in our database. Our GraphQL queries handle all the rest of our CRUD functionality.
+Our BE API uses a combination of a ReSTful endpoint and GraphQL queries. Our single ReSTful endpoint, `POST /upload`, handles audio file uploads into our nested AWS S3 bucket, and creates related entries in our database. Our GraphQL queries handle all the rest of our CRUD functionality.
 
 ### POST /upload - ReSTful Endpoint
 
@@ -99,7 +99,9 @@ POST /upload allows for the upload of audio files and the creation of both compe
 |  Year           |  Integer      |   (required for competition uploads) - Numeric Representation of the year competition is held in            |
 |  Description    |  String       |   (required for competition uploads) - Description of the competition to be shown on the competitions page  |
 |  Genre          |  String       |   (required for competition uploads) - Genre of the competition to be shown on the competitions page        |
-|  Rules          |  String       |   (required for competition uploads) - Genre of the competition to be shown on the competitions page        |
+|  Rules          |  String       |   (required for competition uploads) - Rules for the competition to be shown on the competitions page       |
+|  Title          |  String       |   (required for competition uploads) - Title of the competition to be shown in the media player             |
+|  Image          |  String       |   (optional for competition uploads) - Image of the competition to be shown on the competitions page        |
 
 #### Sample Response (type => 'verse')
 
@@ -130,7 +132,12 @@ POST /upload allows for the upload of audio files and the creation of both compe
       "id": "207",
       "track_path": "competitions/es_zone_in.mp3",
       "month": "2",
-      "year": "2021"
+      "year": "2021",
+      "description": "Wu Tang Sword Style",
+      "genre": "East Coast Hip Hop",
+      "rules": "Submissions due by February 14th. Winners announced on March 1st",
+      "title": "Wu Tang Forever",
+      "image": "https://i.ytimg.com/vi/5CzsXvAZ6R4/mqdefault.jpg"
     }
   }
 }
@@ -147,6 +154,11 @@ query {
     trackPath
     month
     year
+    description
+    genre
+    rules
+    title
+    image
     verses { verseType }
   }
 }
@@ -165,6 +177,8 @@ query {
       "description": "Pidgeot",
       "genre": "Struggle",
       "rules": "Anistar City",
+      "title": "Wu Tang Forever",
+      "image: "https://i.ytimg.com/vi/5CzsXvAZ6R4/mqdefault.jpg"
       "verses": [
         {"id": "223"},
         {"id": "224"}

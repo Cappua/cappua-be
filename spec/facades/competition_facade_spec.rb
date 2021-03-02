@@ -19,7 +19,8 @@ describe 'competition facade' do
       description: "This month's theme is club bangers.",
       genre: "Club Bangers",
       rules: "Vulcan-Style Deathmatch",
-      image: "https://i.ytimg.com/vi/AphxyjrH4SE/hqdefault.jpg"
+      image: "https://i.ytimg.com/vi/AphxyjrH4SE/hqdefault.jpg",
+      title: 'Wu Tang Forever'
     }
 
     allow_any_instance_of(Aws::S3::Client).to receive(:put_object).and_return(mock_response)
@@ -35,6 +36,7 @@ describe 'competition facade' do
     expect(competition.genre).to eq("Club Bangers")
     expect(competition.rules).to eq("Vulcan-Style Deathmatch")
     expect(competition.image).to eq("https://i.ytimg.com/vi/AphxyjrH4SE/hqdefault.jpg")
+    expect(competition.title).to eq("Wu Tang Forever")
   end
 
   it 'unsuccessful upload creates error hash key' do
