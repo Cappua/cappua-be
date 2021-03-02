@@ -99,7 +99,9 @@ POST /upload allows for the upload of audio files and the creation of both compe
 |  Year           |  Integer      |   (required for competition uploads) - Numeric Representation of the year competition is held in            |
 |  Description    |  String       |   (required for competition uploads) - Description of the competition to be shown on the competitions page  |
 |  Genre          |  String       |   (required for competition uploads) - Genre of the competition to be shown on the competitions page        |
-|  Rules          |  String       |   (required for competition uploads) - Genre of the competition to be shown on the competitions page        |
+|  Rules          |  String       |   (required for competition uploads) - Rules for the competition to be shown on the competitions page       |
+|  Title          |  String       |   (required for competition uploads) - Title of the competition to be shown in the media player             |
+|  Image          |  String       |   (optional for competition uploads) - Image of the competition to be shown on the competitions page        |
 
 #### Sample Response (type => 'verse')
 
@@ -130,7 +132,12 @@ POST /upload allows for the upload of audio files and the creation of both compe
       "id": "207",
       "track_path": "competitions/es_zone_in.mp3",
       "month": "2",
-      "year": "2021"
+      "year": "2021",
+      "description": "Wu Tang Sword Style",
+      "genre": "East Coast Hip Hop",
+      "rules": "Submissions due by February 14th. Winners announced on March 1st",
+      "title": "Wu Tang Forever",
+      "image": "https://i.ytimg.com/vi/5CzsXvAZ6R4/mqdefault.jpg"
     }
   }
 }
