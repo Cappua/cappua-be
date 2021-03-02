@@ -5,7 +5,7 @@ describe "A graphql query to find this month's top three contenders" do
     user1 = create(:user)
     user2 = create(:user)
     user3 = create(:user)
-    competition = create(:competition, month: Verse.current_month)
+    competition = create(:competition, month: Time.now.month )
     verse1 = create(:verse, user_id: user1.id, competition_id: competition.id)
     verse2 = create(:verse, user_id: user2.id, competition_id: competition.id)
     verse3 = create(:verse, user_id: user3.id, competition_id: competition.id)
