@@ -3,8 +3,8 @@
 ![](https://img.shields.io/badge/Ruby-2.5.3-orange)
 
 # Cappua BE
-
-![logo](https://user-images.githubusercontent.com/68172332/109255025-6d803400-77b0-11eb-82a9-e552c81a5661.png)
+![logoflash](https://i.imgur.com/76Mzhkl.gif)
+<!--![logo](https://user-images.githubusercontent.com/68172332/109255025-6d803400-77b0-11eb-82a9-e552c81a5661.png)-->
 
 ## Table of Contents
   - [What it does](#what-it-does)
