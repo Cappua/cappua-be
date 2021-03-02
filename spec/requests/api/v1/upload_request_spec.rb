@@ -63,7 +63,7 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
     expect(json).to have_key(:data)
     expect(json[:data]).to be_a(Hash)
     expect(json[:data]).to have_key(:id)
-    expect(json[:data][:id]).to be_a(String)
+    expect(json[:data][:id].to_s).to be_a(String)
     expect(json[:data]).to have_key(:type)
     expect(json[:data][:type]).to eq('competition')
     expect(json[:data]).to have_key(:attributes)
