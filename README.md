@@ -147,6 +147,11 @@ query {
     trackPath
     month
     year
+    description
+    genre
+    rules
+    title
+    image
     verses { verseType }
   }
 }
@@ -165,6 +170,8 @@ query {
       "description": "Pidgeot",
       "genre": "Struggle",
       "rules": "Anistar City",
+      "title": "Wu Tang Forever",
+      "image: "https://i.ytimg.com/vi/5CzsXvAZ6R4/mqdefault.jpg"
       "verses": [
         {"id": "223"},
         {"id": "224"}
