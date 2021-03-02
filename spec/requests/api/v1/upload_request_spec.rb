@@ -45,12 +45,17 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
     expect(json[:data][:attributes][:title]).to eq('Just a Friend')
   end
 
-  it 'can upload a track to an aws s3 bucket' do
+  it 'can upload a competition to an aws s3 bucket' do
     form_body = {
       audio: @sample_verse,
       month: 2,
       year: 2021,
-      type: 'competition'
+      type: 'competition',
+      description: "Wu Tang Sword Style",
+      genre: "East Coast Hip Hop",
+      rules: "Don't talk about Wu Tang Sword Style",
+      image: 'https://i.ytimg.com/vi/5CzsXvAZ6R4/mqdefault.jpg',
+      title: 'Wu Tang Forever'
     }
 
     allow_any_instance_of(Aws::S3::Client).to receive(:put_object).and_return(@mock_response)
@@ -74,6 +79,16 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
     expect(json[:data][:attributes][:month]).to eq(form_body[:month])
     expect(json[:data][:attributes]).to have_key(:year)
     expect(json[:data][:attributes][:year]).to eq(form_body[:year])
+    expect(json[:data][:attributes]).to have_key(:description)
+    expect(json[:data][:attributes][:description]).to eq(form_body[:description])
+    expect(json[:data][:attributes]).to have_key(:genre)
+    expect(json[:data][:attributes][:genre]).to eq(form_body[:genre])
+    expect(json[:data][:attributes]).to have_key(:rules)
+    expect(json[:data][:attributes][:rules]).to eq(form_body[:rules])
+    expect(json[:data][:attributes]).to have_key(:image)
+    expect(json[:data][:attributes][:image]).to eq(form_body[:image])
+    expect(json[:data][:attributes]).to have_key(:title)
+    expect(json[:data][:attributes][:title]).to eq(form_body[:title])
   end
 
   it 'sends 400 response for verse upload requests with bad user/tracks ids' do
