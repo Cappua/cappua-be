@@ -27,6 +27,7 @@
 ### The Cappua BE Repo
 
 > The Cappua BE repo creates both GraphQL queries and a ReSTful endpoint for the FE repo to access data. This repo handles audio file uploads to the Cappua AWS S3 bucket, and stores the S3 bucket file locations for easy FE access via the AWS Cloudfront CDN. Finally, the repo stores vote data and user data in its relational database.
+> Please [visit the Cappua FE Repo here](https://github.com/Cappua/cappua-fe).
 
 ## How to Install
 
