@@ -1,10 +1,10 @@
 class CompetitionFacade
   def self.create_competition(competition_params, audio)
-    key = "/competitions/#{audio.original_filename}"
+    key = "competitions/#{audio.original_filename}"
     response = UploadService.upload_audio(audio, key)
     if successful_upload?(response)
       competition = Competition.create(
-        competition_params.merge({track_path: key})
+        competition_params.merge({track_path: "/#{key}"})
       )
     else
       output = Hash.new
