@@ -3,7 +3,6 @@
 ![](https://img.shields.io/badge/Ruby-2.5.3-orange)
 ![](https://img.shields.io/badge/AWS_SDK_Ruby-V3-red)
 ![](https://img.shields.io/badge/GraphQL-pink)
-![](https://img.shields.io/badge/AWS_S3-V3-purple)
 
 # Cappua BE
 
