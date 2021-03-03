@@ -7,12 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Create users
-user = User.create(
-  name: 'Biz Markie',
-  email: 'justafriend@example.com',
-  user_sub: "mock_sub",
-  image: 'https://i.imgur.com/2kXMspT.png'
-)
+user = User.find_or_create_by(email: 'justafriend@example.com') do |user|
+  user.name = 'Biz Markie'
+  user.email = 'justafriend@example.com'
+  user.user_sub = "mock_sub"
+  user.image = 'https://i.imgur.com/2kXMspT.png'
+end
 
 images = [
   'https://i.imgur.com/bXzahL4.png',
