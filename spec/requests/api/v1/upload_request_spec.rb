@@ -96,7 +96,8 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
       audio: @sample_verse,
       user_id: 1,
       competition_id: 1,
-      type: 'verse'
+      type: 'verse',
+      title: 'verse title'
     }
 
     allow_any_instance_of(Aws::S3::Client).to receive(:put_object).and_return(@mock_response)
@@ -109,6 +110,27 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
     expect(json[:error]).to eq('Invalid user or competition id.')
   end
 
+  it 'sends 400 response for verse upload requests with missing title' do
+    user = create(:user)
+    competition = create(:competition)
+
+    form_body = {
+      audio: @sample_verse,
+      user_id: user.id,
+      competition_id: competition.id,
+      type: 'verse'
+    }
+
+    allow_any_instance_of(Aws::S3::Client).to receive(:put_object).and_return(@mock_response)
+
+    post '/api/v1/upload', params: form_body, headers: { "Content-Type": 'multipart/form-data' }
+    json = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response.status).to eq(400)
+    expect(json).to be_a(Hash)
+    expect(json[:error]).to eq('Title parameter is required for verse upload.')
+  end
+
   it 'sends 500 response for verse upload requests that do not successfully upload' do
     user = create(:user)
     competition = create(:competition)
@@ -116,7 +138,8 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
       audio: @sample_verse,
       user_id: user.id,
       competition_id: competition.id,
-      type: 'verse'
+      type: 'verse',
+      title: 'verse title'
     }
     mock_response = AWSResponse.new(nil)
 
@@ -130,11 +153,9 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
     expect(json[:error]).to eq('Verse could not be successfully uploaded to cloud database.')
   end
 
-  it 'sends 400 response for competition track upload requests with invalid month' do
+  it 'sends 400 response for competition track upload requests with all missing parameters' do
     form_body = {
       audio: @sample_verse,
-      month: 15,
-      year: 2021,
       type: 'competition'
     }
 
@@ -145,31 +166,13 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
 
     expect(response.status).to eq(400)
     expect(json).to be_a(Hash)
-    expect(json[:error]).to eq('Month and year must be included and valid in competition upload requests.')
+    expect(json[:error]).to eq('Month, year, genre, rules, image, title, description parameters must be included for competition upload requests.')
   end
 
-  it 'sends 400 response for competition track upload requests with no year parameter' do
+  it 'sends 400 response for competition track upload requests with some missing parameters' do
     form_body = {
       audio: @sample_verse,
       month: 10,
-      year: nil,
-      type: 'competition'
-    }
-
-    allow_any_instance_of(Aws::S3::Client).to receive(:put_object).and_return(@mock_response)
-
-    post '/api/v1/upload', params: form_body, headers: { "Content-Type": 'multipart/form-data' }
-    json = JSON.parse(response.body, symbolize_names: true)
-
-    expect(response.status).to eq(400)
-    expect(json).to be_a(Hash)
-    expect(json[:error]).to eq('Month and year must be included and valid in competition upload requests.')
-  end
-
-  it 'sends 400 response for competition track upload requests with no month parameter' do
-    form_body = {
-      audio: @sample_verse,
-      month: nil,
       year: 2021,
       type: 'competition'
     }
@@ -181,7 +184,29 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
 
     expect(response.status).to eq(400)
     expect(json).to be_a(Hash)
-    expect(json[:error]).to eq('Month and year must be included and valid in competition upload requests.')
+    expect(json[:error]).to eq('Genre, rules, image, title, description parameters must be included for competition upload requests.')
+  end
+
+  it 'sends 400 response for competition track upload requests with one missing parameter' do
+    form_body = {
+      audio: @sample_verse,
+      month: 2,
+      year: 2021,
+      type: 'competition',
+      genre: "East Coast Hip Hop",
+      rules: "Don't talk about Wu Tang Sword Style",
+      image: 'https://i.ytimg.com/vi/5CzsXvAZ6R4/mqdefault.jpg',
+      title: 'Wu Tang Forever'
+    }
+
+    allow_any_instance_of(Aws::S3::Client).to receive(:put_object).and_return(@mock_response)
+
+    post '/api/v1/upload', params: form_body, headers: { "Content-Type": 'multipart/form-data' }
+    json = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response.status).to eq(400)
+    expect(json).to be_a(Hash)
+    expect(json[:error]).to eq('Description parameter must be included for competition upload requests.')
   end
 
   it 'sends 500 response for competition track upload requests that do not successfully upload' do
@@ -189,7 +214,12 @@ describe 'Upload endpoint' do # intentionally omitting vcr; see below
       audio: @sample_verse,
       month: 2,
       year: 2021,
-      type: 'competition'
+      type: 'competition',
+      description: "Wu Tang Sword Style",
+      genre: "East Coast Hip Hop",
+      rules: "Don't talk about Wu Tang Sword Style",
+      image: 'https://i.ytimg.com/vi/5CzsXvAZ6R4/mqdefault.jpg',
+      title: 'Wu Tang Forever'
     }
 
     mock_response = AWSResponse.new(nil)

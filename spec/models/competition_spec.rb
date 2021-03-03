@@ -9,6 +9,7 @@ describe Competition, type: :model do
     it {should validate_presence_of(:genre)}
     it {should validate_presence_of(:rules)}
     it {should validate_presence_of(:image)}
+    it {should validate_presence_of(:title)}
   end
   describe 'relationships' do
     it do
