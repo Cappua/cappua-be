@@ -38,7 +38,7 @@ end
 
 # Create March competition, verses, votes
 march_competition = Competition.create(
-  track_path: '/competitions/march_wu_tang_forever.mp3',
+  track_path: '/competitions/march_wu_tang_forever_instrumental_verse.mp3',
   month: 3,
   year: 2021,
   description: "Wu Tang Sword Style. Get with your sick tight click, and go all out.",
