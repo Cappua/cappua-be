@@ -26,9 +26,10 @@ images = [
   'https://i.imgur.com/824CUyd.png',
   'https://i.imgur.com/PVm5UTW.png']
 
+names = ["Lil'", "Big", "Young", "Tha Great", "Missy", "The Savage"]
 10.times do |index|
   User.create(
-    name: Faker::Cannabis.strain,
+    name: "#{names.sample} #{Faker::Cannabis.strain}",
     email: Faker::Internet.email,
     user_sub: "mosk_sub",
     image: images[index]
